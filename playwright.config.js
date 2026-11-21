@@ -21,7 +21,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'PORT=11432 NO_OPEN=true USE_MOCK_RESULTS=true node src/dashboard/server.js --local',
+    command: 'PORT=11432 NO_OPEN=true USE_MOCK_RESULTS=true bun src/dashboard/server.js --local',
     cwd: rootDir,
     url: 'http://localhost:11432',
     reuseExistingServer: !process.env.CI,

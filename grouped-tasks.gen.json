@@ -1,236 +1,146 @@
 {
   "guides": {
-    "accessibility": {
-      "accessibility": [
-        "daily-grind"
-      ],
-      "accessible-error-announcement": [
-        "task"
-      ],
-      "accessible-generated-content": [
-        "daily-grind"
-      ],
-      "respect-os-text-scale": [
+    "wasm": {
+      "cpp-on-the-web": [
+        "devtools-times",
         "daily-grind"
       ]
     },
-    "built-in-ai": {
-      "language-detection": [
-        "task"
-      ],
-      "language-model": [
-        "task"
-      ],
-      "summarizer": [
-        "task"
-      ],
-      "translator": [
-        "daily-grind",
-        "devtools-times"
-      ]
-    },
-    "css": {
-      "animate-to-intrinsic-sizes": [
-        "task"
-      ],
-      "atrule-support-conditionals": [
+    "ui-behaviors": {
+      "prevent-page-scroll-under-modal-dialog": [
         "daily-grind"
       ],
-      "calculate-with-intrinsic-sizes": [
-        "task"
-      ],
-      "child-state-based-styling": [
-        "task"
-      ],
-      "content-based-styling": [
-        "task"
-      ],
-      "css": [
+      "dynamic-sort": [
         "daily-grind"
       ],
-      "css-layout": [
+      "scoped-component-transitions": [
         "daily-grind"
       ],
-      "design-token-reactivity": [
+      "group-element-transitions": [
         "task"
       ],
-      "dynamic-sibling-styling": [
+      "scroll-target-on-load": [
         "task"
       ],
-      "fluid-scaling": [
+      "move-dom-element-without-losing-state": [
         "task"
       ],
-      "individual-transform-properties": [
+      "platform-controls-dismiss-dialog": [
         "task"
       ],
-      "overflow-clipping-control": [
+      "interest-triggered-tooltips": [
         "task"
       ],
-      "reduce-style-repetition": [
+      "physics-based-easing": [
         "task"
       ],
-      "responsive-design": [
+      "scrollytelling": [
+        "task"
+      ],
+      "dynamic-sibling-animations": [
+        "task"
+      ],
+      "spatial-navigation": [
         "daily-grind"
       ],
-      "selector-atrule-combinations": [
+      "search-hidden-content": [
+        "task"
+      ],
+      "consistent-cross-document-transitions": [
+        "devtools-times",
         "daily-grind"
       ],
-      "size-aware-styling": [
-        "daily-grind",
-        "devtools-times"
-      ],
-      "style-parent-with-has": [
-        "task"
-      ],
-      "usage-aware-component-variations": [
-        "daily-grind",
-        "devtools-times"
-      ]
-    },
-    "forms": {
-      "animated-select-picker": [
-        "task"
-      ],
-      "autofill-address-form": [
-        "task"
-      ],
-      "autofill-highlight-inputs": [
-        "task"
-      ],
-      "autofill-payment-form": [
-        "task"
-      ],
-      "autofill-sign-in-form": [
-        "task"
-      ],
-      "autofill-sign-up-form": [
-        "task"
-      ],
-      "brand-consistent-forms": [
-        "task"
-      ],
-      "branded-select-styling": [
-        "task"
-      ],
-      "custom-select-picker-layouts": [
-        "task"
-      ],
-      "form-fields-automatically-fit-contents": [
-        "task"
-      ],
-      "forms": [
-        "task"
-      ],
-      "ime-safe-enter-submit": [
-        "task"
-      ],
-      "required-field-feedback": [
-        "task"
-      ],
-      "rich-media-picker": [
-        "task"
-      ],
-      "select-menu-interaction": [
-        "task"
-      ],
-      "slider": [
+      "directional-navigation-transitions": [
+        "devtools-times",
         "daily-grind"
       ],
-      "sms-otp-form": [
-        "daily-grind",
-        "devtools-times"
-      ],
-      "switch": [
-        "daily-grind",
-        "daily-grind-limited"
-      ],
-      "validate-input-after-interaction": [
-        "task"
-      ]
-    },
-    "html": {
-      "accessible-web-components": [
-        "daily-grind"
-      ],
-      "custom-elements": [
-        "daily-grind"
-      ],
-      "form-associated-custom-elements": [
-        "daily-grind"
-      ],
-      "html": [
-        "daily-grind",
-        "devtools-times"
-      ],
-      "prerendering-custom-elements": [
-        "daily-grind"
-      ],
-      "shadow-dom": [
-        "daily-grind"
-      ],
-      "styling-web-components": [
-        "daily-grind"
-      ],
-      "web-components": [
-        "daily-grind"
-      ]
-    },
-    "js": {
-      "calculate-event-differentials": [
+      "declarative-dialog-popover-control": [
         "task"
       ],
-      "capture-location-agnostic-data": [
-        "task"
-      ],
-      "coordinate-global-events": [
-        "task"
-      ],
-      "js": [
+      "drag": [
         "daily-grind"
       ],
-      "sort-high-precision-timestamps": [
+      "sortable-table": [
+        "daily-grind"
+      ],
+      "persistent-top-layer-ui": [
         "task"
       ],
-      "support-global-calendar-systems": [
+      "scroll-entry-exit-effects": [
+        "task"
+      ],
+      "scroll-snap-realtime-feedback": [
+        "task"
+      ],
+      "2d-panning": [
+        "daily-grind"
+      ],
+      "interactive-content-reveal": [
+        "task"
+      ],
+      "parallax-scroll-effects": [
+        "task"
+      ],
+      "scroll-completion-effects": [
+        "daily-grind"
+      ],
+      "scroll-snap-state-sync": [
+        "task"
+      ],
+      "custom-button-actions": [
+        "task"
+      ],
+      "same-document-transitions": [
+        "task"
+      ],
+      "anchor-positioning-tab-underline": [
+        "daily-grind"
+      ],
+      "drag-and-drop": [
+        "daily-grind"
+      ],
+      "cross-document-transitions": [
+        "task"
+      ],
+      "highlight-text-ranges": [
+        "task"
+      ],
+      "light-dismiss-a-dialog": [
+        "task"
+      ],
+      "interest-triggered-action-previews": [
+        "task"
+      ],
+      "swipe-to-reveal": [
+        "daily-grind"
+      ],
+      "animate-to-from-top-layer": [
+        "task"
+      ],
+      "motion": [
+        "daily-grind"
+      ],
+      "swipe-to-remove": [
+        "task"
+      ],
+      "animate-element-entry-exit": [
+        "task"
+      ],
+      "carousel-snap-highlights": [
         "task"
       ]
     },
     "performance": {
+      "performance": [
+        "task"
+      ],
       "batch-analytics-events": [
         "task"
       ],
-      "break-up-long-tasks": [
-        "task"
-      ],
-      "calculate-total-foreground-time": [
-        "task"
-      ],
-      "conditional-async-dependencies": [
+      "improve-next-page-load-performance": [
         "task"
       ],
       "defer-rendering-heavy-content": [
-        "task"
-      ],
-      "defer-work-until-scroll-ends": [
-        "task"
-      ],
-      "deliver-optimized-decorative-images": [
-        "task"
-      ],
-      "deprioritize-background-fetches": [
-        "task"
-      ],
-      "detect-initial-visibility-state": [
-        "task"
-      ],
-      "efficient-background-processing": [
-        "task"
-      ],
-      "faster-spa-view-transitions": [
-        "daily-grind",
-        "devtools-times"
-      ],
-      "flicker-free-client-side-ab-testing": [
         "task"
       ],
       "full-session-analytics": [
@@ -239,20 +149,17 @@
       "identify-heavy-scripts": [
         "task"
       ],
-      "identify-inp-causes": [
-        "task"
-      ],
-      "improve-next-page-load-performance": [
+      "efficient-background-processing": [
         "task"
       ],
       "interaction-paint-timing": [
         "daily-grind"
       ],
-      "interactions-in-complex-layouts": [
+      "detect-initial-visibility-state": [
         "task"
       ],
-      "lazy-load-video-and-audio": [
-        "daily-grind"
+      "flicker-free-client-side-ab-testing": [
+        "task"
       ],
       "optimize-image-priority": [
         "daily-grind"
@@ -260,26 +167,194 @@
       "optimize-preload-priority": [
         "task"
       ],
-      "optimize-script-priority": [
+      "resolution-optimized-pseudo-elements": [
         "task"
       ],
       "out-of-order-html-streaming": [
         "daily-grind"
       ],
-      "performance": [
-        "task"
+      "lazy-load-video-and-audio": [
+        "daily-grind"
       ],
-      "resolution-optimized-pseudo-elements": [
+      "identify-inp-causes": [
         "task"
       ],
       "schedule-tasks-by-priority": [
+        "task"
+      ],
+      "calculate-total-foreground-time": [
+        "task"
+      ],
+      "break-up-long-tasks": [
+        "task"
+      ],
+      "faster-spa-view-transitions": [
+        "devtools-times",
+        "daily-grind"
+      ],
+      "conditional-async-dependencies": [
+        "task"
+      ],
+      "interactions-in-complex-layouts": [
+        "task"
+      ],
+      "optimize-script-priority": [
+        "task"
+      ],
+      "deprioritize-background-fetches": [
+        "task"
+      ],
+      "defer-work-until-scroll-ends": [
+        "task"
+      ],
+      "deliver-optimized-decorative-images": [
+        "task"
+      ]
+    },
+    "visual-design": {
+      "typography": [
+        "daily-grind"
+      ],
+      "improve-text-layout-and-legibility": [
+        "task"
+      ],
+      "browser-ui-theming": [
+        "daily-grind"
+      ],
+      "complex-shapes": [
+        "task"
+      ],
+      "adapt-scrollbar-to-contrast-preferences": [
+        "task"
+      ],
+      "apply-webgl-shaders": [
+        "task"
+      ],
+      "equal-width-text-lines": [
+        "daily-grind",
+        "daily-grind-limited"
+      ],
+      "color": [
+        "daily-grind"
+      ],
+      "custom-text-decorations": [
+        "daily-grind"
+      ],
+      "export-html-media-from-canvas": [
+        "task"
+      ],
+      "dark-mode": [
+        "task"
+      ],
+      "visual-effects": [
+        "daily-grind"
+      ],
+      "visually-stable-font-fallbacks": [
+        "task"
+      ],
+      "precise-text-alignment": [
+        "task"
+      ],
+      "visually-stable-mixed-fonts": [
+        "task"
+      ],
+      "contrast-color": [
+        "daily-grind"
+      ],
+      "visually-texture-content": [
+        "task"
+      ],
+      "expose-canvas-content-to-browser-features": [
+        "task"
+      ],
+      "customize-scrollbar-color-and-thickness": [
+        "task"
+      ],
+      "interactive-content-in-3d-scenes": [
+        "task"
+      ],
+      "shaped-cutouts": [
+        "task"
+      ],
+      "teaser": [
         "task"
       ]
     },
     "privacy": {
       "privacy": [
-        "daily-grind",
-        "devtools-times"
+        "devtools-times",
+        "daily-grind"
+      ]
+    },
+    "webmcp": {
+      "agentic-javascript-tools": [
+        "task"
+      ],
+      "webmcp": [
+        "devtools-times",
+        "daily-grind"
+      ],
+      "agentic-forms": [
+        "devtools-times",
+        "daily-grind"
+      ]
+    },
+    "css": {
+      "content-based-styling": [
+        "task"
+      ],
+      "fluid-scaling": [
+        "task"
+      ],
+      "overflow-clipping-control": [
+        "task"
+      ],
+      "dynamic-sibling-styling": [
+        "task"
+      ],
+      "css-layout": [
+        "daily-grind"
+      ],
+      "css": [
+        "daily-grind"
+      ],
+      "style-parent-with-has": [
+        "task"
+      ],
+      "child-state-based-styling": [
+        "task"
+      ],
+      "selector-atrule-combinations": [
+        "daily-grind"
+      ],
+      "design-token-reactivity": [
+        "task"
+      ],
+      "calculate-with-intrinsic-sizes": [
+        "task"
+      ],
+      "atrule-support-conditionals": [
+        "daily-grind"
+      ],
+      "size-aware-styling": [
+        "devtools-times",
+        "daily-grind"
+      ],
+      "animate-to-intrinsic-sizes": [
+        "task"
+      ],
+      "responsive-design": [
+        "daily-grind"
+      ],
+      "individual-transform-properties": [
+        "task"
+      ],
+      "reduce-style-repetition": [
+        "task"
+      ],
+      "usage-aware-component-variations": [
+        "devtools-times",
+        "daily-grind"
       ]
     },
     "pwa": {
@@ -291,80 +366,33 @@
         "daily-grind"
       ]
     },
-    "security": {
-      "client-side-encryption": [
-        "daily-grind"
-      ],
-      "digital-signatures": [
-        "daily-grind"
-      ],
-      "local-network-access": [
-        "daily-grind",
-        "devtools-times"
-      ],
-      "passkey-authentication": [
-        "task"
-      ],
-      "passkey-conditional-create": [
-        "task"
-      ],
-      "passkey-management": [
-        "daily-grind",
-        "devtools-times"
-      ],
-      "passkey-reauthentication": [
-        "task"
-      ],
-      "passkey-registration": [
-        "task"
-      ],
-      "passkeys": [
-        "daily-grind",
-        "devtools-times"
-      ],
-      "quick-sign-ins": [
-        "daily-grind"
-      ],
-      "restrict-outbound-connections": [
-        "daily-grind"
-      ],
-      "sanitize-untrusted-html": [
-        "daily-grind"
-      ],
-      "secure-external-subresources": [
-        "daily-grind"
-      ],
-      "security": [
-        "daily-grind"
-      ],
-      "trusted-types": [
-        "daily-grind"
-      ],
-      "validate-origins": [
-        "daily-grind"
-      ],
-      "verify-email-ownership": [
-        "daily-grind"
-      ]
-    },
     "ui-atoms": {
       "carousel-slide-effects": [
         "task"
       ],
-      "component-specific-light-dark-theme": [
+      "position-aware-tooltips": [
         "task"
+      ],
+      "shrinking-header-on-scroll": [
+        "task"
+      ],
+      "single-line-overflow": [
+        "daily-grind"
       ],
       "icons": [
         "daily-grind"
       ],
-      "position-aware-tooltips": [
-        "task"
-      ],
-      "pull-to-reveal": [
-        "task"
-      ],
       "responsive-table": [
         "daily-grind"
+      ],
+      "component-specific-light-dark-theme": [
+        "task"
+      ],
+      "viewport-aware-dropdowns": [
+        "task"
+      ],
+      "state-aware-sticky-headers": [
+        "task"
       ],
       "scroll-position-aware-elements": [
         "task"
@@ -375,310 +403,282 @@
       "scrollability-affordance-hints": [
         "task"
       ],
-      "shrinking-header-on-scroll": [
-        "task"
-      ],
-      "single-line-overflow": [
-        "daily-grind"
-      ],
-      "state-aware-sticky-headers": [
-        "task"
-      ],
-      "viewport-aware-dropdowns": [
+      "pull-to-reveal": [
         "task"
       ]
     },
-    "ui-behaviors": {
-      "2d-panning": [
+    "js": {
+      "coordinate-global-events": [
+        "task"
+      ],
+      "support-global-calendar-systems": [
+        "task"
+      ],
+      "capture-location-agnostic-data": [
+        "task"
+      ],
+      "calculate-event-differentials": [
+        "task"
+      ],
+      "js": [
         "daily-grind"
       ],
-      "anchor-positioning-tab-underline": [
+      "sort-high-precision-timestamps": [
+        "task"
+      ]
+    },
+    "forms": {
+      "slider": [
         "daily-grind"
       ],
-      "animate-element-entry-exit": [
+      "rich-media-picker": [
         "task"
       ],
-      "animate-to-from-top-layer": [
+      "select-menu-interaction": [
         "task"
       ],
-      "carousel-snap-highlights": [
+      "sms-otp-form": [
+        "devtools-times",
+        "daily-grind"
+      ],
+      "required-field-feedback": [
         "task"
       ],
-      "consistent-cross-document-transitions": [
+      "brand-consistent-forms": [
+        "task"
+      ],
+      "form-fields-automatically-fit-contents": [
+        "task"
+      ],
+      "custom-select-picker-layouts": [
+        "task"
+      ],
+      "animated-select-picker": [
+        "task"
+      ],
+      "forms": [
+        "task"
+      ],
+      "autofill-highlight-inputs": [
+        "task"
+      ],
+      "validate-input-after-interaction": [
+        "task"
+      ],
+      "branded-select-styling": [
+        "task"
+      ],
+      "autofill-sign-up-form": [
+        "task"
+      ],
+      "switch": [
         "daily-grind",
-        "devtools-times"
+        "daily-grind-limited"
       ],
-      "cross-document-transitions": [
+      "ime-safe-enter-submit": [
         "task"
       ],
-      "custom-button-actions": [
+      "autofill-address-form": [
         "task"
       ],
-      "declarative-dialog-popover-control": [
+      "autofill-payment-form": [
         "task"
       ],
-      "directional-navigation-transitions": [
-        "daily-grind",
-        "devtools-times"
-      ],
-      "drag": [
+      "autofill-sign-in-form": [
+        "task"
+      ]
+    },
+    "accessibility": {
+      "accessible-generated-content": [
         "daily-grind"
       ],
-      "drag-and-drop": [
+      "respect-os-text-scale": [
         "daily-grind"
       ],
-      "dynamic-sibling-animations": [
-        "task"
-      ],
-      "dynamic-sort": [
+      "accessibility": [
         "daily-grind"
       ],
-      "group-element-transitions": [
+      "accessible-error-announcement": [
         "task"
-      ],
-      "highlight-text-ranges": [
-        "task"
-      ],
-      "interactive-content-reveal": [
-        "task"
-      ],
-      "interest-triggered-action-previews": [
-        "task"
-      ],
-      "interest-triggered-tooltips": [
-        "task"
-      ],
-      "light-dismiss-a-dialog": [
-        "task"
-      ],
-      "motion": [
+      ]
+    },
+    "user-experience": {
+      "natural-interactions": [
         "daily-grind"
       ],
-      "move-dom-element-without-losing-state": [
-        "task"
-      ],
-      "parallax-scroll-effects": [
-        "task"
-      ],
-      "persistent-top-layer-ui": [
-        "task"
-      ],
-      "physics-based-easing": [
-        "task"
-      ],
-      "platform-controls-dismiss-dialog": [
-        "task"
-      ],
-      "prevent-page-scroll-under-modal-dialog": [
+      "content-first-noise-reduction": [
         "daily-grind"
       ],
-      "same-document-transitions": [
-        "task"
-      ],
-      "scoped-component-transitions": [
-        "daily-grind"
-      ],
-      "scroll-completion-effects": [
-        "daily-grind"
-      ],
-      "scroll-entry-exit-effects": [
-        "task"
-      ],
-      "scroll-snap-realtime-feedback": [
-        "task"
-      ],
-      "scroll-snap-state-sync": [
-        "task"
-      ],
-      "scroll-target-on-load": [
-        "task"
-      ],
-      "scrollytelling": [
-        "task"
-      ],
-      "search-hidden-content": [
-        "task"
-      ],
-      "sortable-table": [
-        "daily-grind"
-      ],
-      "spatial-navigation": [
-        "daily-grind"
-      ],
-      "swipe-to-remove": [
-        "task"
-      ],
-      "swipe-to-reveal": [
+      "form-factor-adaptation": [
         "daily-grind"
       ]
     },
     "ui-components": {
-      "accordion": [
+      "progress-ring": [
         "daily-grind"
       ],
-      "app-menus": [
-        "daily-grind"
+      "persistent-toast-notifications": [
+        "task"
       ],
-      "breadcrumbs": [
-        "daily-grind"
-      ],
-      "card": [
+      "scrollspy": [
         "daily-grind"
       ],
       "carousel": [
         "daily-grind"
       ],
-      "checkbox": [
+      "stack-drill-down": [
+        "task"
+      ],
+      "hovercard": [
+        "daily-grind"
+      ],
+      "persistent-app-tours": [
+        "task"
+      ],
+      "toolbar": [
+        "daily-grind"
+      ],
+      "tabs": [
+        "daily-grind",
+        "daily-grind-limited"
+      ],
+      "navbar": [
+        "daily-grind"
+      ],
+      "breadcrumbs": [
+        "daily-grind"
+      ],
+      "dark-mode-toggle": [
+        "daily-grind"
+      ],
+      "card": [
+        "daily-grind"
+      ],
+      "app-menus": [
+        "daily-grind"
+      ],
+      "accordion": [
+        "daily-grind"
+      ],
+      "navigation-drawer": [
+        "task"
+      ],
+      "spinner": [
+        "daily-grind"
+      ],
+      "menu": [
+        "daily-grind"
+      ],
+      "dialog": [
         "daily-grind"
       ],
       "copy-button": [
         "daily-grind",
         "daily-grind-newly"
       ],
-      "dark-mode-toggle": [
-        "daily-grind"
-      ],
-      "dialog": [
-        "daily-grind"
-      ],
-      "hovercard": [
-        "daily-grind"
-      ],
-      "menu": [
-        "daily-grind"
-      ],
-      "navbar": [
-        "daily-grind"
-      ],
-      "navigation-drawer": [
-        "task"
-      ],
-      "persistent-app-tours": [
-        "task"
-      ],
-      "persistent-toast-notifications": [
-        "task"
-      ],
       "progress": [
         "daily-grind"
       ],
-      "progress-ring": [
-        "daily-grind"
-      ],
-      "scrollspy": [
-        "daily-grind"
-      ],
-      "spinner": [
-        "daily-grind"
-      ],
-      "stack-drill-down": [
-        "task"
-      ],
-      "tabs": [
-        "daily-grind",
-        "daily-grind-limited"
-      ],
-      "toolbar": [
+      "checkbox": [
         "daily-grind"
       ]
     },
-    "user-experience": {
-      "content-first-noise-reduction": [
+    "built-in-ai": {
+      "language-detection": [
+        "task"
+      ],
+      "translator": [
+        "devtools-times",
         "daily-grind"
       ],
-      "form-factor-adaptation": [
-        "daily-grind"
-      ],
-      "natural-interactions": [
-        "daily-grind"
-      ]
-    },
-    "visual-design": {
-      "adapt-scrollbar-to-contrast-preferences": [
+      "summarizer": [
         "task"
       ],
-      "apply-webgl-shaders": [
-        "task"
-      ],
-      "browser-ui-theming": [
-        "daily-grind"
-      ],
-      "color": [
-        "daily-grind"
-      ],
-      "complex-shapes": [
-        "task"
-      ],
-      "contrast-color": [
-        "daily-grind"
-      ],
-      "custom-text-decorations": [
-        "daily-grind"
-      ],
-      "customize-scrollbar-color-and-thickness": [
-        "task"
-      ],
-      "dark-mode": [
-        "task"
-      ],
-      "equal-width-text-lines": [
-        "daily-grind",
-        "daily-grind-limited"
-      ],
-      "export-html-media-from-canvas": [
-        "task"
-      ],
-      "expose-canvas-content-to-browser-features": [
-        "task"
-      ],
-      "improve-text-layout-and-legibility": [
-        "task"
-      ],
-      "interactive-content-in-3d-scenes": [
-        "task"
-      ],
-      "precise-text-alignment": [
-        "task"
-      ],
-      "shaped-cutouts": [
-        "task"
-      ],
-      "teaser": [
-        "task"
-      ],
-      "typography": [
-        "daily-grind"
-      ],
-      "visual-effects": [
-        "daily-grind"
-      ],
-      "visually-stable-font-fallbacks": [
-        "task"
-      ],
-      "visually-stable-mixed-fonts": [
-        "task"
-      ],
-      "visually-texture-content": [
+      "language-model": [
         "task"
       ]
     },
-    "wasm": {
-      "cpp-on-the-web": [
-        "daily-grind",
-        "devtools-times"
-      ]
-    },
-    "webmcp": {
-      "agentic-forms": [
-        "daily-grind",
-        "devtools-times"
-      ],
-      "agentic-javascript-tools": [
+    "security": {
+      "passkey-reauthentication": [
         "task"
       ],
-      "webmcp": [
-        "daily-grind",
-        "devtools-times"
+      "sanitize-untrusted-html": [
+        "daily-grind"
+      ],
+      "digital-signatures": [
+        "daily-grind"
+      ],
+      "verify-email-ownership": [
+        "daily-grind"
+      ],
+      "local-network-access": [
+        "devtools-times",
+        "daily-grind"
+      ],
+      "passkey-management": [
+        "devtools-times",
+        "daily-grind"
+      ],
+      "trusted-types": [
+        "daily-grind"
+      ],
+      "validate-origins": [
+        "daily-grind"
+      ],
+      "secure-external-subresources": [
+        "daily-grind"
+      ],
+      "passkey-conditional-create": [
+        "task"
+      ],
+      "client-side-encryption": [
+        "daily-grind"
+      ],
+      "restrict-outbound-connections": [
+        "daily-grind"
+      ],
+      "passkeys": [
+        "devtools-times",
+        "daily-grind"
+      ],
+      "passkey-authentication": [
+        "task"
+      ],
+      "quick-sign-ins": [
+        "daily-grind"
+      ],
+      "security": [
+        "daily-grind"
+      ],
+      "passkey-registration": [
+        "task"
+      ]
+    },
+    "html": {
+      "shadow-dom": [
+        "daily-grind"
+      ],
+      "form-associated-custom-elements": [
+        "daily-grind"
+      ],
+      "styling-web-components": [
+        "daily-grind"
+      ],
+      "web-components": [
+        "daily-grind"
+      ],
+      "custom-elements": [
+        "daily-grind"
+      ],
+      "prerendering-custom-elements": [
+        "daily-grind"
+      ],
+      "html": [
+        "devtools-times",
+        "daily-grind"
+      ],
+      "accessible-web-components": [
+        "daily-grind"
       ]
     }
   },

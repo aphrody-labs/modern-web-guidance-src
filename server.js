@@ -60,7 +60,7 @@ if (STATIC) {
   await runAllManifests({ outputDir: distDir });
 
   console.log(`🚀 Spawning statikk on port ${PORT} serving ${distDir}...`);
-  const p = spawn('pnpm', ['dlx', 'statikk', '--port', PORT.toString(), distDir], { stdio: 'inherit' });
+  const p = spawn('bunx', ['statikk', '--port', PORT.toString(), distDir], { stdio: 'inherit' });
   
   const url = `http://localhost:${PORT}/?source=static`;
   console.log(`Server running at ${url}`);
@@ -366,8 +366,8 @@ const server = http.createServer(async (req, res) => {
 
         console.log(`\n>>> Launching UI Eval Job in background...`);
 
-        const p = spawn('pnpm', [
-          'gd',
+        const p = spawn('bun', [
+          'bin/gd.ts',
           'eval',
           '--config',
           tempConfigPath,
@@ -486,7 +486,7 @@ const server = http.createServer(async (req, res) => {
   } else if (decodedPath.startsWith('/guides/')) {
     filePath = path.join(guidesDir, decodedPath.substring(8));
   } else if (decodedPath.startsWith('/public-evals/')) {
-    // Built by `pnpm public:build` into out/; never read from the dashboard dir, which is deployed.
+    // Built by `bun run public:build` into out/; never read from the dashboard dir, which is deployed.
     filePath = path.join(outDir, decodedPath.substring(1));
   } else {
     const relativePath = decodedPath.startsWith('/') ? decodedPath.substring(1) : decodedPath;
