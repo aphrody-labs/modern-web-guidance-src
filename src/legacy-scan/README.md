@@ -16,7 +16,7 @@ See [format-support.md](./format-support.md) for which file formats and embedded
 
 ```bash
 # In the modern-web-guidance repository:
-node bin/gd.ts legacy-scan [path/to/project] [options]
+bun bin/gd.ts legacy-scan [path/to/project] [options]
 
 # In any brownfield project via npx:
 npx -y modern-web-guidance@latest legacy-scan [path/to/project] [options]
@@ -285,10 +285,10 @@ Cross-split boundary isolation is statically verified by internal audit tooling.
 
 ```bash
 # Run unit tests across legacy-scan subsystem:
-node --test "src/legacy-scan/**/*.test.ts"
+bun test "src/legacy-scan/**/*.test.ts"
 
 # Run preflight verification (build, typecheck, lint):
-pnpm run preflight
+bun run preflight
 ```
 
 ---
@@ -317,7 +317,7 @@ Follow this 4-step workflow to author, test, and qualify a rule for modern web g
 2. **Agentic verification**: Ensure that `--json` output emits the complete rubric so AI coding agents can verify findings before proposing modernizations.
 
 ### Step 4: Held-Out Qualification
-1. **Run preflight checks**: `pnpm run preflight` and `node --test "src/legacy-scan/**/*.test.ts"`.
+1. **Run preflight checks**: `bun run preflight` and `bun test "src/legacy-scan/**/*.test.ts"`.
 2. **Run detection evaluation**: Multi-judge evaluation is run against `src/legacy-scan/eval/detection-eval.ts` on the evaluation decks.
 3. **Qualification criteria**:
    - **Experimental Rule**: Active under evaluation and tightening prior to default shipping.

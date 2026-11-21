@@ -616,7 +616,7 @@ export async function testGrader(targetDirRaw: string): Promise<CalibrationResul
 async function run(): Promise<void> {
   const args = process.argv.slice(2);
   if (args.length === 0) {
-    console.error('Usage: pnpm grade <path-to-target-directory>');
+    console.error('Usage: bun run grade <path-to-target-directory>');
     process.exit(1);
   }
 

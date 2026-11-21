@@ -40,8 +40,7 @@ jobs:
             fi
           fi
 
-          corepack enable pnpm
-          pnpm update web-features
+          bun update web-features
 
           if git diff --quiet; then
             echo "::notice::No new web-features package updates available. Workspaces are already on the latest version."
@@ -62,26 +61,22 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
-
-      - name: Setup Node
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
         with:
-          node-version: 24
-          cache: 'pnpm'
+          bun-version: latest
 
       - name: Update web-features across workspaces
         run: |
-          pnpm update web-features
+          bun update web-features
 
       - name: Regenerate feature-to-groups cache for ATL triage
-        run: node src/ci/generate-feature-to-groups.ts
+        run: bun src/ci/generate-feature-to-groups.ts
 
       - name: Validate repository guide impact after web-features bump
         id: validate-web-feature-update
         continue-on-error: true
-        run: node src/ci/validate-after-web-feature-update.ts
+        run: bun src/ci/validate-after-web-feature-update.ts
 
       - name: Generate GitHub App token
         if: ${{ vars.GH_APP_ID != '' }}

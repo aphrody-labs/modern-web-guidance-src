@@ -4,9 +4,9 @@ import { getFeatureStatus } from '../core/baseline.ts';
 const args = process.argv.slice(2);
 
 if (args.length === 0) {
-  console.log('Usage: pnpm baselinestatus <query> [--json]');
-  console.log('Example: pnpm baselinestatus overflow');
-  console.log('Example: pnpm baselinestatus overflow --json');
+  console.log('Usage: bun run baselinestatus <query> [--json]');
+  console.log('Example: bun run baselinestatus overflow');
+  console.log('Example: bun run baselinestatus overflow --json');
   process.exit(0);
 }
 

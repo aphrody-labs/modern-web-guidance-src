@@ -100,23 +100,24 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
           fetch-depth: 0
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: latest
 
-      - name: Setup Node
+      - name: Setup Node (published CLI target, npm publish)
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
-          cache: 'pnpm'
           registry-url: 'https://registry.npmjs.org/'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: bun install --frozen-lockfile
 
       - name: Collect latest evaluation results from gh-pages
         id: collect-evals
         continue-on-error: true
-        run: pnpm run collect-evals
+        run: bun run collect-evals
 
       - name: Handle eval collection fallback on failure
         if: steps.collect-evals.outcome != 'success'
@@ -127,13 +128,13 @@ jobs:
           git checkout -- src/build/eval-results-summary.json || true
 
       - name: Build distribution
-        run: pnpm run build
+        run: bun run build
 
       - name: Verify installation with install-skills test
         env:
           FULL: 1
           TEST_REPORTER: spec
-        run: node --test src/cli/install-skills.test.ts
+        run: bun test --timeout=120000 src/cli/install-skills.test.ts
 
       - name: Configure Git for Auth and Commit
         env:
@@ -148,7 +149,7 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: pnpm run publish-skills
+        run: bun run publish-skills
 
       - name: Publish to npm via OIDC Provenance
         run: |

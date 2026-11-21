@@ -2,6 +2,12 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 
+// os.homedir() in Bun snapshots HOME at startup; honor later changes to the environment like Node does.
+function homeDirectory(): string {
+  const fromEnv = process.platform === 'win32' ? process.env.USERPROFILE : process.env.HOME;
+  return fromEnv || os.homedir();
+}
+
 export interface MwgConfig {
   allowOriginTrials?: boolean;
   allowVolatileFeatures?: boolean;
@@ -42,7 +48,7 @@ export function resolveMwgrcPath(startDir = process.cwd()): string {
     }
     const parent = path.dirname(dir);
     if (parent === dir) {
-      const homeConfig = path.join(os.homedir(), CONFIG_FILENAME);
+      const homeConfig = path.join(homeDirectory(), CONFIG_FILENAME);
       if (fs.existsSync(homeConfig)) return homeConfig;
       return path.join(path.resolve(startDir), CONFIG_FILENAME);
     }

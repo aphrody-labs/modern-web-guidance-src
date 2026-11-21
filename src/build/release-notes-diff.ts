@@ -3,7 +3,6 @@ import os from 'node:os';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
 import matter from '@11ty/gray-matter';
-import { minimatch } from 'minimatch';
 import { features } from 'web-features';
 import { rootDir } from '../core/paths.ts';
 export interface EvalSummaryItem {
@@ -811,9 +810,9 @@ export function getExactDistributionDiff(previousTag: string, publishCliDir: str
 
       const isAllowed = GH_PUBLISH_PATTERNS.every(pattern => {
         if (pattern.startsWith('!')) {
-          return !minimatch(relPath, pattern.slice(1), { dot: true });
+          return !new Bun.Glob(pattern.slice(1)).match(relPath);
         }
-        return minimatch(relPath, pattern, { dot: true });
+        return new Bun.Glob(pattern).match(relPath);
       });
 
       if (!isAllowed) continue;

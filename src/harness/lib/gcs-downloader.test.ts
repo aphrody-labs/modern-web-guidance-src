@@ -82,7 +82,7 @@ describe('gcs-downloader', () => {
         fetchCount++;
         await new Promise((r) => setTimeout(r, 25));
         return new Response(JSON.stringify({ suite: testSuite, agent: 'claude_code' }), { status: 200 });
-      }) as typeof fetch;
+      }) as unknown as typeof fetch;
 
       await Promise.all([
         downloadSuiteEvalsIfMissing(testSuite, 'Bearer mock-token'),

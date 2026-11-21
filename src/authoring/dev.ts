@@ -903,7 +903,7 @@ if (import.meta.url.startsWith('file:') && process.argv[1] === import.meta.filen
   const guidedOnly = args.includes('--guided-only');
 
   if (!dir) {
-    console.error('Usage: node src/authoring/dev.ts <path/to/guide> [--no-test] [--guided-only]');
+    console.error('Usage: bun src/authoring/dev.ts <path/to/guide> [--no-test] [--guided-only]');
     process.exit(1);
   }
 

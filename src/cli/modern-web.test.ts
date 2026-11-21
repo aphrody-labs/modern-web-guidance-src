@@ -328,7 +328,7 @@ describe('modern-web CLI', () => {
     const npxShim = path.join(tempBinDir, 'npx');
     fs.writeFileSync(
       npxShim,
-      `#!/bin/sh\nnode -e 'require("node:fs").writeFileSync(process.argv[1], JSON.stringify(process.argv.slice(2)))' "${logFile}" "$@"\n`,
+      `#!/bin/sh\n"${process.execPath}" -e 'require("node:fs").writeFileSync(process.argv[1], JSON.stringify(process.argv.slice(2)))' "${logFile}" "$@"\n`,
       { mode: 0o755 }
     );
 
@@ -378,7 +378,7 @@ describe('modern-web CLI', () => {
         const logFile = path.join(tempBinDir, `${bin}-args.json`);
         fs.writeFileSync(
           path.join(tempBinDir, bin),
-          `#!/bin/sh\nnode -e 'require("node:fs").writeFileSync(process.argv[1], JSON.stringify(process.argv.slice(2)))' "${logFile}" "$@"\n`,
+          `#!/bin/sh\n"${process.execPath}" -e 'require("node:fs").writeFileSync(process.argv[1], JSON.stringify(process.argv.slice(2)))' "${logFile}" "$@"\n`,
           { mode: 0o755 }
         );
       }

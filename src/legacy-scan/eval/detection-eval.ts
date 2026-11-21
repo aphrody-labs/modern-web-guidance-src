@@ -373,7 +373,7 @@ export interface JudgeRunOptions {
   apiKey?: string;
   baseUrl?: string;
   concurrency?: number;
-  fetchFn?: typeof fetch;
+  fetchFn?: (...args: Parameters<typeof fetch>) => Promise<Response>;
   temperature?: number;
 }
 

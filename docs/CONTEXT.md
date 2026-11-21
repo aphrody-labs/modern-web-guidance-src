@@ -117,9 +117,9 @@ A `draft` field in a guide's frontmatter withholds it from distribution. It must
 ### Setup
 
 ```bash
-pnpm install
-pnpm setup:playwright
-pnpm link --global && gd setup-completion
+bun install
+bun run setup:playwright
+bun link && gd setup-completion
 ```
 
 ### Commands
@@ -142,7 +142,7 @@ For detailed `gd dev`, `gd eval`, and `gd compare` pipeline mechanics and runner
 
 ## 4. Guidance Serving Infrastructure (`src/build/`, `src/cli/`, `src/rag/`)
 
-The code in `src/build/`, `src/cli/`, and `src/rag/` compiles `guide.md` and `SKILL.md` files (`pnpm build`) into a semantic vector index and the standalone Skills CLI distribution (`src/cli/modern-web.ts` -> `dist/skills-cli`):
+The code in `src/build/`, `src/cli/`, and `src/rag/` compiles `guide.md` and `SKILL.md` files (`bun run build`) into a semantic vector index and the standalone Skills CLI distribution (`src/cli/modern-web.ts` -> `dist/skills-cli`):
 
 - **Guided mode (Skills CLI)**: Evaluation and production coding agents invoke the standalone `modern-web` CLI tool to search and retrieve guidance on demand.
 - **Unguided mode**: The control condition in evaluations, where the agent relies solely on its pre-trained weights without guidance tools enabled.

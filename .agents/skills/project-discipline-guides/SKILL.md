@@ -22,7 +22,7 @@ Use the provided script to generate "Redundancy Mirrors"—comprehensive guides 
 
 ```bash
 # Ensure that model setup is configured (instructions are in the top level readme)
-node .agents/skills/project-discipline-guides/scripts/generate_mirrors.ts <discipline_name>
+bun .agents/skills/project-discipline-guides/scripts/generate_mirrors.ts <discipline_name>
 ```
 
 This will create files inside the `.agents/skills/project-discipline-guides/mirrors/` directory:

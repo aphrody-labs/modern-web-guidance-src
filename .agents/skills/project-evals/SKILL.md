@@ -130,7 +130,7 @@ TARGET_FILE=$PWD/guides/<category>/<slug>/demo.html GD_PREBUILT_TARGET_URL=http:
 TARGET_FILE=$PWD/guides/<category>/<slug>/negative-demo.html GD_PREBUILT_TARGET_URL=http://localhost/negative-demo.html PLAYWRIGHT_OUTPUT_DIR=/tmp/pw-cal ./node_modules/.bin/playwright test -c src/grading/playwright.config.ts guides/<category>/<slug>/grader.ts
 
 # Run static grader lint and guide/coverage integrity checks
-node --test src/core/grader-lint.test.ts src/authoring/guides-integrity.test.ts
+bun test --timeout=120000 src/core/grader-lint.test.ts src/authoring/guides-integrity.test.ts
 ```
 
 If you modify the underlying `gd dev` prompts (`src/authoring/dev-prompts.ts`, `src/authoring/dev.ts`, `src/grading/generate-grader.ts`), use the [`dev-prompt-canary`](../dev-prompt-canary/SKILL.md) skill to empirically validate the prompt changes against the canary suite. When modifying existing graders or shared grading helpers, use [`grader-replay`](../grader-replay/SKILL.md) to replay saved nightly solutions and verify check flips; for triaging pass rates and retrieval flags across nightly runs, use [`nightly-eval-investigation`](../nightly-eval-investigation/SKILL.md).

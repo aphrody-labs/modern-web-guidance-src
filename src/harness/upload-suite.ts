@@ -256,7 +256,7 @@ async function main() {
   const customResultsDir = positionalArgs[1];
 
   if (!suiteName) {
-    console.error('❌ Please provide a suite name (e.g. pnpm upload <suite-name>) or --reextract-manifest.');
+    console.error('❌ Please provide a suite name (e.g. bun run upload <suite-name>) or --reextract-manifest.');
     process.exit(1);
   }
 

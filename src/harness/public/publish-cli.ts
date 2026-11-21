@@ -16,7 +16,7 @@ import { GcsSuiteStore } from './suite-store.ts';
  * CLI: publish the public copy of eval suites to `gh-pages` and dispatch the
  * Pages deployment workflow on `main`.
  *
- *   node src/harness/public/publish-cli.ts [--dry-run] [--force] [--no-dispatch]
+ *   bun src/harness/public/publish-cli.ts [--dry-run] [--force] [--no-dispatch]
  *
  * Stateless: checks out what is currently published, rebuilds it from the
  * checked-in allowlist (incrementally, via the published `build-state.json`),

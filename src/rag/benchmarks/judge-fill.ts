@@ -497,7 +497,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   });
   const [queriesPath, qrelsPath] = positionals;
   if (!queriesPath || !qrelsPath) {
-    throw new Error("Usage: node src/rag/benchmarks/judge-fill.ts <queries.jsonl> <qrels.jsonl> [--batch] [--model=...]");
+    throw new Error("Usage: bun src/rag/benchmarks/judge-fill.ts <queries.jsonl> <qrels.jsonl> [--batch] [--model=...]");
   }
   const count = await fillMissingJudgmentsInFiles(queriesPath, qrelsPath, {
     batch: values.batch,

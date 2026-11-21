@@ -16,7 +16,7 @@ describe('baseline-status CLI', () => {
 
   it('prints usage when no arguments provided', () => {
     const { stdout } = runCLI([]);
-    assert.ok(stdout.includes('Usage: pnpm baselinestatus'));
+    assert.ok(stdout.includes('Usage: bun run baselinestatus'));
   });
 
   it('filters by query and outputs markdown table', () => {

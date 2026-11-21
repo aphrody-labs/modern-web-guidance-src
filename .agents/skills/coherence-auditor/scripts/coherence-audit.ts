@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
-import { globSync } from 'glob';
+import { globSync } from '../../../../src/core/glob.ts';
 import { config } from '../../../../src/core/skills-config.ts';
 import { rootDir } from '../../../../src/core/paths.ts';
 
@@ -78,7 +78,7 @@ if (fs.existsSync(path.join(REPO_ROOT, 'docs/CONTEXT.md'))) {
 // 8. Guides Integrity
 console.log('\n🛡️  Running Guides Integrity Tests...');
 try {
-  execSync('node --test src/authoring/guides-integrity.test.ts', { cwd: REPO_ROOT, stdio: 'inherit' });
+  execSync('bun test src/authoring/guides-integrity.test.ts', { cwd: REPO_ROOT, stdio: 'inherit' });
   console.log('✅ Guides integrity tests passed.');
 } catch {
   console.error('❌ Guides integrity tests failed.');
@@ -88,7 +88,7 @@ try {
 if (process.argv.includes('--preflight')) {
   console.log('\n⚡ Running Full Preflight...');
   try {
-    execSync('pnpm run preflight', { cwd: REPO_ROOT, stdio: 'inherit' });
+    execSync('bun run preflight', { cwd: REPO_ROOT, stdio: 'inherit' });
     console.log('✅ Preflight passed.');
   } catch {
     console.error('❌ Preflight failed.');

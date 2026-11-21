@@ -52,18 +52,18 @@ teacher_model (gemini-embedding-001) + "\n" + task_type (RETRIEVAL_DOCUMENT) + "
 The exact embedded text includes the guide ID, description, chunk Markdown, and expanded macros (`[baseline]`, `[feature:...]`).
 Any change to guide prose, chunk boundaries, baseline data, or macro expansions automatically changes the hash and invalidates the cached vector for that chunk.
 
-### 1. Day-to-Day Development & CI Builds (`pnpm build`)
+### 1. Day-to-Day Development & CI Builds (`bun run build`)
 
 - Builds use the committed chunk cache.
 - If a guide is edited or added and its teacher vectors are not yet in `src/rag/gen/guide-chunk-cache.*`, `build-guides.ts` prints a concise info line (or fails release builds when `--fail-on-missing-vectors` is passed), records the chunk in `missingChunks`, and sets `vector: []` so the uncached chunk is indexed for BM25 lexical search while unchanged chunks of the guide retain their cached teacher vectors (avoiding mixing query-space `StaticEmbedder` vectors into the document chunk index).
 
-### 2. Pre-Release Embedding Script (`node src/rag/embed-guide-chunks.ts`)
+### 2. Pre-Release Embedding Script (`bun src/rag/embed-guide-chunks.ts`)
 
 Before cutting a release, an engineer runs:
 
 ```bash
 # Requires GEMINI_API_KEY in .env or environment
-node src/rag/embed-guide-chunks.ts
+bun src/rag/embed-guide-chunks.ts
 ```
 
 What `embed-guide-chunks.ts` does:
@@ -76,12 +76,12 @@ What `embed-guide-chunks.ts` does:
 
 To check whether all chunks have cached vectors without calling the API:
 ```bash
-node src/rag/embed-guide-chunks.ts --check
+bun src/rag/embed-guide-chunks.ts --check
 ```
 
 ### 3. Release & Publish Gate
 
-The release script (`node src/build/publish-skills.ts`) automatically ensures vector completeness before publishing:
+The release script (`bun src/build/publish-skills.ts`) automatically ensures vector completeness before publishing:
 1. On real releases, it runs `embedGuideChunks({ prune: true })`, automatically embedding any missing chunks (requiring `GEMINI_API_KEY` in `.env` or environment) and pruning stale entries. Any updated `src/rag/gen/guide-chunk-cache.*` files are automatically committed and pushed to `main` right alongside `README.md` and `src/build/eval-results-summary.json`.
 2. `build-dist.ts` and `build-guides.ts` enforce `--fail-on-missing-vectors` during release builds.
 3. On `--dry-run` (used by PR CI), `publish-skills.ts` warns on uncached chunks and builds with `vector: []` (`failOnMissingVectors: false`) so guide PRs do not need `GEMINI_API_KEY` or `embed-guide-chunks.ts`.
@@ -92,13 +92,13 @@ There are no silent fallbacks.
 
 ---
 
-## Vocabulary & Model Retraining (`node src/rag/train-query-words.ts`)
+## Vocabulary & Model Retraining (`bun src/rag/train-query-words.ts`)
 
 When a batch of new guides introduces net-new non-hyphenated web platform identifiers (for example, a newly coined single-word CSS property or browser API name) and you want dense embeddings for those new tokens:
 
 ```bash
 # Requires GEMINI_API_KEY in .env or environment
-node src/rag/train-query-words.ts
+bun src/rag/train-query-words.ts
 ```
 
 What [`src/rag/train-query-words.ts`](./train-query-words.ts) does:
@@ -116,10 +116,10 @@ The committed `src/rag/gen/query-words.{json,i8,scale.f32}` table (`29,165` word
 Exact command used to produce the committed table:
 
 ```bash
-node src/rag/train-query-words.ts --extra-queries path/to/train-queries.jsonl
+bun src/rag/train-query-words.ts --extra-queries path/to/train-queries.jsonl
 ```
 
-After updating `src/rag/gen/`, run `pnpm build` and `pnpm benchmark:rag --public-only` to rebuild the guide vectors and verify retrieval metrics.
+After updating `src/rag/gen/`, run `bun run build` and `bun run benchmark:rag --public-only` to rebuild the guide vectors and verify retrieval metrics.
 
 For retrieval quality scores, leakage-prevention guardrails, and evaluation datasets, see [`./benchmarks/README.md`](./benchmarks/README.md) and the [Search Quality Dashboard (`src/dashboard/search/index.html`)](../dashboard/search/index.html).
 

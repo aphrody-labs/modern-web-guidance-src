@@ -90,7 +90,7 @@ function isRecord(val: unknown): val is Record<string, unknown> {
 }
 
 function printUsage(): void {
-  console.log(`Usage: node .agents/skills/grader-replay/scripts/replay.ts [options]
+  console.log(`Usage: bun .agents/skills/grader-replay/scripts/replay.ts [options]
 
 Options:
   --guides <list>   Comma-separated guide slugs, paths, or task keys (default: changed graders vs origin/main)

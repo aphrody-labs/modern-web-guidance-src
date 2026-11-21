@@ -22,7 +22,7 @@ This skill allows you to run a comprehensive audit of the repository's documenta
 
   You should run the following command to execute the audit:
   ```bash
-  node .agents/skills/coherence-auditor/scripts/coherence-audit.ts
+  bun .agents/skills/coherence-auditor/scripts/coherence-audit.ts
   ```
 
   This script performs the following checks:
@@ -36,7 +36,7 @@ This skill allows you to run a comprehensive audit of the repository's documenta
 
   To run a full preflight check (build, typecheck, lint, and all tests), you can run:
   ```bash
-  node .agents/skills/coherence-auditor/scripts/coherence-audit.ts --preflight
+  bun .agents/skills/coherence-auditor/scripts/coherence-audit.ts --preflight
   ```
 
   Your instructions:

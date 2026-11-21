@@ -54,7 +54,7 @@ let inflightRefresh: Promise<boolean> | null = null;
  */
 export function ensureFreshHostCodexAuth(
   authPath = path.join(os.homedir(), '.codex', 'auth.json'),
-  fetchFn: typeof fetch = fetch
+  fetchFn: ((...args: Parameters<typeof fetch>) => Promise<Response>) = fetch
 ): Promise<boolean> {
   return (inflightRefresh ??= (async () => {
     let auth: any;

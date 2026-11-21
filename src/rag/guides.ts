@@ -19,7 +19,7 @@ function loadUseCases(): UseCase[] {
   const dataDir = resolveSkillsCliDataDir();
   const guidesJsonPath = path.join(dataDir, 'gen/guides.json');
   if (!existsSync(guidesJsonPath)) {
-    throw new Error(`guides.json not found at ${guidesJsonPath}. Run 'pnpm build' first.`);
+    throw new Error(`guides.json not found at ${guidesJsonPath}. Run 'bun run build' first.`);
   }
   return JSON.parse(readFileSync(guidesJsonPath, 'utf-8'));
 }

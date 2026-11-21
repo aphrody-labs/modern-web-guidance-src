@@ -12,17 +12,17 @@
     "verbatimModuleSyntax": true,
     "allowImportingTsExtensions": true,
     "allowJs": true,
-    "checkJs": true
+    "checkJs": true,
+    "types": [
+      "bun"
+    ]
   },
-
   "include": [
     "bin/**/*",
     "src/**/*",
-    "guides/**/*",
     ".agents/skills/coherence-auditor/scripts/coherence-audit.ts",
     ".agents/skills/grader-replay/scripts/replay.ts"
   ],
-
   "exclude": [
     "**/node_modules",
     "**/dist",

@@ -218,7 +218,7 @@ describe('Guides Validation (Single Source of Truth)', () => {
     assert.strictEqual(
       fs.readFileSync(FEATURE_TO_GROUPS_PATH, 'utf8'),
       buildFeatureToGroupsJson(),
-      'src/ci/feature-to-groups.gen.json is out of date. Run: node src/ci/generate-feature-to-groups.ts'
+      'src/ci/feature-to-groups.gen.json is out of date. Run: bun src/ci/generate-feature-to-groups.ts'
     );
   });
 

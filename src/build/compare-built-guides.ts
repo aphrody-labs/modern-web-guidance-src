@@ -49,8 +49,8 @@ function setupBaselineWorkspace() {
     runCommand(`git worktree add --detach "${TEMP_REPO_DIR}" "${mergeBase}"`);
 
     console.log("Compiling baseline visual guides...");
-    execSync("pnpm install --frozen-lockfile", { cwd: TEMP_REPO_DIR, env: safeEnv, stdio: "inherit" });
-    execSync("pnpm build", { cwd: TEMP_REPO_DIR, env: safeEnv, stdio: "inherit" });
+    execSync("bun install --frozen-lockfile", { cwd: TEMP_REPO_DIR, env: safeEnv, stdio: "inherit" });
+    execSync("bun run build", { cwd: TEMP_REPO_DIR, env: safeEnv, stdio: "inherit" });
 
     fs.rmSync(BASELINE_DIR, { recursive: true, force: true });
     fs.mkdirSync(BASELINE_DIR, { recursive: true });

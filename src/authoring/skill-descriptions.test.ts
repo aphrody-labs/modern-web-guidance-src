@@ -3,7 +3,7 @@ import assert from 'node:assert';
 import fs from 'fs';
 import path from 'path';
 import matter from '@11ty/gray-matter';
-import { globSync } from 'glob';
+import { globSync } from '../core/glob.ts';
 import { rootDir } from '../core/paths.ts';
 
 test('all skill descriptions are under 1024 characters', () => {

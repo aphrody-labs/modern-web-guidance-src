@@ -134,10 +134,10 @@ So nothing needs UI for it:
 ## Lifecycle
 
 - `src/harness/public/allowlist.json` on `main` is the single source of truth.
-  A suite appears when it matches the allowlist and `pnpm public:publish` runs;
+  A suite appears when it matches the allowlist and `bun run public:publish` runs;
   it disappears when it is added to `exclude` (or no longer matches) and the
   publisher runs again: its directory is removed and the manifest rewritten.
-- `pnpm public:publish` is the only publisher to `gh-pages`. It is stateless:
+- `bun run public:publish` is the only publisher to `gh-pages`. It is stateless:
   it checks out what is published, rebuilds from the checked-in allowlist, and
   pushes.
 - Retention (`retention.maxAgeDays`, `retention.maxSuitesPerAgent`, and
@@ -176,7 +176,7 @@ So nothing needs UI for it:
 mkdir -p /tmp/store/nightly-2026-10-20_20-43-48-codex_cli
 cp src/harness/public/fixtures/nightly-sample.evals.json /tmp/store/nightly-2026-10-20_20-43-48-codex_cli/evals.json
 printf '{"include":["nightly-*"],"exclude":[],"overrides":[],"releasedModels":["example-model"]}' > /tmp/allowlist.json
-pnpm public:build --all --source /tmp/store --allowlist /tmp/allowlist.json --out /tmp/pe
+bun run public:build --all --source /tmp/store --allowlist /tmp/allowlist.json --out /tmp/pe
 ls /tmp/pe/public-evals
 ```
 
@@ -185,7 +185,7 @@ and an empty `artifacts.json` per suite. Add `<run>/<guide>/<task>/<mode>/agent.
 and `modern-web.log` under the suite folder to see per-run artifacts come through. `--suite <id>` builds a
 single suite (skipping retention and state updates), provided the allowlist
 selects it.
-The dev server (`pnpm dashboard`) serves `out/public-evals/` at `/public-evals/`,
+The dev server (`bun run dashboard`) serves `out/public-evals/` at `/public-evals/`,
 so a build into `out/` shows up in the signed-out dashboard; nothing under
 `src/dashboard/` is ever read for it.
 

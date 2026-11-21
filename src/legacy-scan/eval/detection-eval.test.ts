@@ -494,7 +494,7 @@ describe('code snippet slicing, blind cards prep, and direct judge runner', () =
     assert.match(expectedProvenance.ruleGuideHash, /^[0-9a-f]{12}$/);
     assert.equal(expectedProvenance.ruleHash, 'rulehash1234');
 
-    const mockDirectFetch: typeof fetch = async () =>
+    const mockDirectFetch: (...args: Parameters<typeof fetch>) => Promise<Response> = async () =>
       mockGeminiResponse({
         candidates: [
           {

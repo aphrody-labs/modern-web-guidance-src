@@ -201,8 +201,8 @@ ${coverageInstruction}Write one expectation per \`test('...', ...)\` block acros
 
 ## 5. Dependencies & Sandbox Constraints
 Do not install any npm packages or execute application dev, build, or test commands in your workspace. However, you MUST verify that your generated grader code compiles cleanly and passes linting. Run ONLY these verification commands in your workspace and fix any errors before ending your turn:
-1. \`npx tsc --noEmit --skipLibCheck --target esnext --module nodenext --moduleResolution nodenext --allowImportingTsExtensions --esModuleInterop grader.ts\`
-2. \`npx oxlint grader.ts\`
+1. \`bunx tsc --noEmit --skipLibCheck --target esnext --module nodenext --moduleResolution nodenext --allowImportingTsExtensions --esModuleInterop grader.ts\`
+2. \`bunx oxlint grader.ts\`
 
 # INSTRUCTION
 When writing files, you MUST use your built-in structured file editing tools (e.g., write_file or replace). Do not use shell commands (like cat, echo, or heredocs <<) to create files in the terminal.`;

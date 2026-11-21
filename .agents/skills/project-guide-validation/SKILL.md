@@ -26,7 +26,7 @@ When assigned to validate a guide, create a task list artifact based on this che
 
 Before performing qualitative or browser verification, read the `guide.md` file in its entirety and run the automated guide validation suite:
 *   **Understand the Problem & Solution**: Identify the core developer problem the guide addresses and the recommended API, property, or architectural approach.
-*   **Run Automated Validation**: Run `node --test src/authoring/guides-integrity.test.ts` to validate frontmatter, `web-feature-ids` (including that every feature a macro references is listed), markdown soundness, transclusion macros, and grader expectation coverage (and inspect the macro-expanded output in `out/build/skills-cli/guides/<category>/<slug>.md` after `pnpm build` when using macros).
+*   **Run Automated Validation**: Run `bun test --timeout=120000 src/authoring/guides-integrity.test.ts` to validate frontmatter, `web-feature-ids` (including that every feature a macro references is listed), markdown soundness, transclusion macros, and grader expectation coverage (and inspect the macro-expanded output in `out/build/skills-cli/guides/<category>/<slug>.md` after `bun run build` when using macros).
 *   **When Reviewing a PR (Splits, Merges, & Reorgs)**: Inspect existing review threads first to avoid duplicating open feedback or rehashing settled discussions. Compare full `BASE` and `HEAD` files (`git show <base_sha>:<path>`) bullet-by-bullet and code-block-by-code-block to catch silently dropped guidance or duplicate bullets, and check for stale `GUIDE_REF` or `INCLUDE` targets across `guides/` and `features/`.
 
 ## 2. Qualitative & Best Practices Review
@@ -68,7 +68,7 @@ Review `expectations.md` against `guide.md`, `demo.html`, and primary specs/MDN/
 Always use the **DevTools MCP** server to test the demo associated with the guide. This drives testing autonomously without requiring manual user interaction.
 
 ### Steps for Verification:
-1.  **Start Local Server First**: Before opening the page with DevTools MCP, start a lightweight HTTP server (e.g., using `python3 -m http.server 8080` or `npx http-server` in the background via `run_command`) to serve the demo file. This ensures that polyfills and modules load correctly for both automated and manual tests, avoiding issues with the `file:///` protocol.
+1.  **Start Local Server First**: Before opening the page with DevTools MCP, start a lightweight HTTP server (e.g., using `python3 -m http.server 8080` or `bunx http-server` in the background via `run_command`) to serve the demo file. This ensures that polyfills and modules load correctly for both automated and manual tests, avoiding issues with the `file:///` protocol.
 2.  **Load the Demo**: Use `mcp_chrome-devtools-mcp_new_page` to open the demo via the local server URL (e.g., `http://localhost:8080/demo.html`).
 3.  **Exercise the Demo Fully**: Interact with the demo to test every corner of the use case and exercise all available options. Use `mcp_chrome-devtools-mcp_click`, `mcp_chrome-devtools-mcp_type_text`, etc.
 4.  **Verify Alignment**: If any part of the demo behavior does not align with the guidance in `guide.md`, ask the user to help reconcile which one needs to be fixed.
@@ -76,7 +76,7 @@ Always use the **DevTools MCP** server to test the demo associated with the guid
 
 ### Baseline and Fallback Verification
 *   **Target Baseline**: The demo file should always assume a baseline target of **widely available**.
-*   **Check Status**: Use [`web-baseline`](../web-baseline/SKILL.md) and `gd baselinestatus <query>` (or `pnpm baselinestatus <query>`) to query the status of any given feature.
+*   **Check Status**: Use [`web-baseline`](../web-baseline/SKILL.md) and `gd baselinestatus <query>` (or `bun run baselinestatus <query>`) to query the status of any given feature.
 *   **Fallback Requirement**: If a feature is NOT widely available, the demo file MUST demonstrate how the fallback strategy described in the guide should be used.
 
 ## 5. Manual Verification

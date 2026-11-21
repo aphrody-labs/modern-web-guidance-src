@@ -103,7 +103,7 @@ The following steps are REQUIRED for creating a new use case:
 
 * **Step 5: Validate the use case stub**
 
-  Run `pnpm test` to validate the use case directory structure and frontmatter metadata.
+  Run `bun run test` to validate the use case directory structure and frontmatter metadata.
 
 * **Step 6: Get the use case approved**
 

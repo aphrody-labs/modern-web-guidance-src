@@ -70,7 +70,7 @@ export function loadVectors(dataDir = resolveSkillsCliDataDir()): UseCaseVector[
   const SCALE_FILE = path.join(genDir, "guide-chunks.scale.f32");
 
   if (!fs.existsSync(VECTORS_FILE) || !fs.existsSync(I8_FILE) || !fs.existsSync(SCALE_FILE)) {
-    throw new Error(`Vectors files not found in ${dataDir}. Run 'pnpm build' first.`);
+    throw new Error(`Vectors files not found in ${dataDir}. Run 'bun run build' first.`);
   }
   const compressed = fs.readFileSync(VECTORS_FILE);
   const jsonContent = zlib.gunzipSync(compressed).toString("utf-8");

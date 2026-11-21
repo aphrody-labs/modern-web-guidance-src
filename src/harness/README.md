@@ -200,10 +200,10 @@ If no model env var is set:
 For development testing, use cheaper/faster models:
 ```bash
 # Fast model for smoke tests
-PI_MODEL=qwen/qwen3.5-plus node src/harness/quick-smoke.ts pi
+PI_MODEL=qwen/qwen3.5-plus bun src/harness/quick-smoke.ts pi
 
 # Use expensive model only for final evals
-PI_MODEL=anthropic/claude-opus GD_SUITE_CONFIG='...' node src/harness/run-suite.ts
+PI_MODEL=anthropic/claude-opus GD_SUITE_CONFIG='...' bun src/harness/run-suite.ts
 ```
 
 ---
@@ -452,13 +452,13 @@ export interface EnvironmentConfig {
 
 Register the agent in `AGENT_CONFIGS` in `src/harness/quick-smoke.ts` and run a smoke test:
 ```bash
-# Usage: node src/harness/quick-smoke.ts [agent] [guided|unguided]
-node src/harness/quick-smoke.ts my-agent unguided
-node src/harness/quick-smoke.ts antigravity-cli guided
-node src/harness/quick-smoke.ts # defaults to pi
+# Usage: bun src/harness/quick-smoke.ts [agent] [guided|unguided]
+bun src/harness/quick-smoke.ts my-agent unguided
+bun src/harness/quick-smoke.ts antigravity-cli guided
+bun src/harness/quick-smoke.ts # defaults to pi
 
 # Or via environment variable
-SMOKE_AGENT=claude-code node src/harness/quick-smoke.ts
+SMOKE_AGENT=claude-code bun src/harness/quick-smoke.ts
 ```
 
 ---
@@ -521,13 +521,13 @@ grep -o '"use_case_id":"[^"]*"' trajectory.jsonl
 ### Test the Skills CLI Independently
 ```bash
 # Run the skills CLI directly to verify it works
-node src/cli/modern-web.ts search "address form"
+bun src/cli/modern-web.ts search "address form"
 ```
 
 ### Check Guide Validation
 ```bash
 # Verify guides are "eval-ready" before running suite
-node src/core/guide-validation.ts
+bun src/core/guide-validation.ts
 ```
 
 ---
@@ -539,18 +539,18 @@ Use the agent-agnostic smoke test for fast validation:
 
 ```bash
 # Test Pi (default)
-node src/harness/quick-smoke.ts
+bun src/harness/quick-smoke.ts
 
 # Test specific agent
-node src/harness/quick-smoke.ts <agent> [guided|unguided]
+bun src/harness/quick-smoke.ts <agent> [guided|unguided]
 
 # Available agents: antigravity-cli, jetski-cli, claude-code, codex-cli, pi
-node src/harness/quick-smoke.ts pi unguided
-node src/harness/quick-smoke.ts antigravity-cli guided
+bun src/harness/quick-smoke.ts pi unguided
+bun src/harness/quick-smoke.ts antigravity-cli guided
 
 # Or via environment
 export SMOKE_AGENT=pi
-node src/harness/quick-smoke.ts
+bun src/harness/quick-smoke.ts
 ```
 
 ### Custom Smoke Tests
@@ -595,14 +595,14 @@ export async function runMyAgentSmokeTest() {
 #### Unit Tests
 Run the Pi trajectory parsing unit tests:
 ```bash
-node --test src/harness/agents/pi-agent.test.ts
+bun test src/harness/agents/pi-agent.test.ts
 ```
 
 #### Manual Trajectory Inspection
 ```bash
 # Run full eval suite with Pi (sessions enabled by default)
 GD_SUITE_CONFIG='{"agent":"pi"}' \
-  node src/harness/run-suite.ts <task>
+  bun src/harness/run-suite.ts <task>
 
 # Sessions are saved to the isolated HOME, then exported to results dir
 # Inspect the JSONL format

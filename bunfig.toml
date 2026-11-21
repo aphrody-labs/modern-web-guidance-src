@@ -1,0 +1,4 @@
+[test]
+preload = ["./src/core/test-env.ts"]
+# Playwright specs run through `playwright test`, not bun test.
+pathIgnorePatterns = ["**/*.spec.js", "**/node_modules/**", "dist/**", "out/**", "results/**"]

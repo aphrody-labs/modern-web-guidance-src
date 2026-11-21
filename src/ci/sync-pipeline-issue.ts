@@ -2,8 +2,8 @@
  * Synchronizes the canonical Content & Eval Pipeline tracker issue (#1815).
  *
  * Usage:
- *   node src/ci/sync-pipeline-issue.ts           # dry-run (prints markdown preview)
- *   node src/ci/sync-pipeline-issue.ts --write   # updates issue #1815 on GitHub
+ *   bun src/ci/sync-pipeline-issue.ts           # dry-run (prints markdown preview)
+ *   bun src/ci/sync-pipeline-issue.ts --write   # updates issue #1815 on GitHub
  */
 
 import child_process from 'node:child_process';

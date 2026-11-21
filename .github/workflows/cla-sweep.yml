@@ -26,10 +26,10 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
-      - name: Setup Node
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
         with:
-          node-version: 24
+          bun-version: latest
 
       - name: Generate GitHub App token
         if: ${{ vars.GH_APP_ID != '' }}
@@ -48,4 +48,4 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token || secrets.GH_PAT || secrets.GITHUB_TOKEN }}
         run: |
-          node src/ci/atl-triage.ts
+          bun src/ci/atl-triage.ts

@@ -1,6 +1,6 @@
 /**
  * Central configuration for skills bundling and publishing.
- * 💡 TIP: Run `node src/build/audit-build.ts` 
+ * 💡 TIP: Run `bun src/build/audit-build.ts` 
  * to preview exactly how this configuration maps across the repository files.
  */
 export interface StandaloneSkill {

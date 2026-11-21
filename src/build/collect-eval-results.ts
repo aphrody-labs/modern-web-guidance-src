@@ -162,7 +162,7 @@ export function collectResults() {
   console.log(`Saved ${summaries.length} nightly eval summaries to ${OUTPUT_PATH}`);
 
   try {
-    execFileSync(process.execPath, ['--test', 'src/build/eval-regression.test.ts'], {
+    execFileSync(process.execPath, ['test', 'src/build/eval-regression.test.ts'], {
       cwd: rootDir,
       stdio: 'inherit',
     });

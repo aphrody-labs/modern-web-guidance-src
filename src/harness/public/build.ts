@@ -12,8 +12,8 @@ import { GcsSuiteStore, LocalSuiteStore } from './suite-store.ts';
 /**
  * CLI: build the public copy of eval suites.
  *
- *   node src/harness/public/build.ts --all
- *   node src/harness/public/build.ts --suite <id> [--suite <id>...]   (each must be selected by the allowlist)
+ *   bun src/harness/public/build.ts --all
+ *   bun src/harness/public/build.ts --suite <id> [--suite <id>...]   (each must be selected by the allowlist)
  *
  * Options:
  *   --out <dir>              Output root (default: out/). Suites land in <out>/public-evals/.

@@ -618,7 +618,7 @@ async function runSingleBenchmark(
     for (const s of summaries) {
       if (s.answerableQueries > 0 && s.unjudgedRate > maxUnjudged) {
         failures.push(
-          `Dataset '${s.dataset}' unjudged rate ${(s.unjudgedRate * 100).toFixed(1)}% exceeds max ${(maxUnjudged * 100).toFixed(1)}%. Run 'node src/rag/benchmarks/judge-fill.ts' to grade newly surfaced guides.`
+          `Dataset '${s.dataset}' unjudged rate ${(s.unjudgedRate * 100).toFixed(1)}% exceeds max ${(maxUnjudged * 100).toFixed(1)}%. Run 'bun src/rag/benchmarks/judge-fill.ts' to grade newly surfaced guides.`
         );
       }
       if (s.dataset === "agent" || s.dataset.startsWith("agent-")) {

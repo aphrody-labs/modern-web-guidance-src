@@ -25,10 +25,10 @@ We use `src/harness/upload-suite.ts` to upload a job to GCS.
 ### Command
 ```bash
 # Upload full job from local repo results
-pnpm upload <suite-name>
+bun run upload <suite-name>
 
 # Upload with flags or from custom directory
-node src/harness/upload-suite.ts <suite-name> [--summary-only] [custom_results_dir]
+bun src/harness/upload-suite.ts <suite-name> [--summary-only] [custom_results_dir]
 ```
 
 ---
@@ -57,10 +57,10 @@ When metrics reporting logic changes, you can backfill all jobs in a directory:
 
 ```bash
 # Backfill local repo results
-node src/harness/backfill.ts
+bun src/harness/backfill.ts
 
 # Backfill a custom directory (e.g., synced from GCS)
-node src/harness/backfill.ts ~/guidance-evals
+bun src/harness/backfill.ts ~/guidance-evals
 ```
 This updates `evals.json` and `evals.md` in each job directory.
 
@@ -75,7 +75,7 @@ To upload **all** jobs in bulk from a custom directory, you can use a simple she
 # Bulk upload ONLY summaries for all jobs in ~/guidance-evals
 for d in ~/guidance-evals/*/ ; do
     suite=$(basename "$d")
-    node src/harness/upload-suite.ts "$suite" ~/guidance-evals --summary-only
+    bun src/harness/upload-suite.ts "$suite" ~/guidance-evals --summary-only
 done
 ```
 
@@ -83,8 +83,8 @@ For a single job:
 
 ```bash
 # Upload ONLY summaries from your custom directory
-node src/harness/upload-suite.ts <suite-name> ~/guidance-evals --summary-only
+bun src/harness/upload-suite.ts <suite-name> ~/guidance-evals --summary-only
 
 # Upload EVERYTHING from your custom directory
-node src/harness/upload-suite.ts <suite-name> ~/guidance-evals
+bun src/harness/upload-suite.ts <suite-name> ~/guidance-evals
 ```

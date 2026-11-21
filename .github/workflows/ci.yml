@@ -27,33 +27,34 @@ jobs:
           fetch-depth: 0
       - run: git fetch --tags
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: latest
 
-      - name: Setup Node
+      - name: Setup Node (published CLI target, npm publish)
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
-          cache: 'pnpm'
 
       - name: Install
-        run: pnpm install --frozen-lockfile
+        run: bun install --frozen-lockfile
 
 
       - name: Preflight (Typecheck, Lint, Tests)
         env:
           TEST_REPORTER: spec
-        run: pnpm run preflight
+        run: bun run preflight
 
       - name: Verify publish-skills (Dry Run)
-        run: pnpm run publish-skills --dry-run
+        run: bun run publish-skills --dry-run
 
       - name: Build DevSite target
-        run: pnpm run build:devsite
+        run: bun run build:devsite
 
       - name: RAG Benchmark (Public Datasets)
         run: |
-          pnpm run benchmark:rag --public-only --markdown /tmp/rag-bench-ci.md
+          bun run benchmark:rag --public-only --markdown /tmp/rag-bench-ci.md
           if [ -f /tmp/rag-bench-ci.md ]; then
             cat /tmp/rag-bench-ci.md >> $GITHUB_STEP_SUMMARY
           fi
@@ -63,8 +64,8 @@ jobs:
         env:
           BASE_REF: ${{ github.base_ref || github.event.repository.default_branch }}
         run: |
-          pnpm run build
-          REPORT_OUTPUT_PATH=/tmp/built-guides-diff.md node src/build/compare-built-guides.ts --base-ref "origin/${BASE_REF}"
+          bun run build
+          REPORT_OUTPUT_PATH=/tmp/built-guides-diff.md bun src/build/compare-built-guides.ts --base-ref "origin/${BASE_REF}"
           if [ -f /tmp/built-guides-diff.md ]; then
             cat /tmp/built-guides-diff.md >> $GITHUB_STEP_SUMMARY
           fi
@@ -81,21 +82,22 @@ jobs:
           persist-credentials: false
       - run: git fetch --tags
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: latest
 
-      - name: Setup Node
+      - name: Setup Node (published CLI target, npm publish)
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
-          cache: 'pnpm'
 
       - name: Install
-        run: pnpm install --frozen-lockfile
+        run: bun install --frozen-lockfile
 
       - name: Get Playwright version
         id: playwright-version
-        run: echo "version=$(pnpm list --depth 0 playwright --json | jq -r '.[0].devDependencies.playwright.version')" >> $GITHUB_OUTPUT
+        run: echo "version=$(jq -r .version node_modules/playwright/package.json)" >> $GITHUB_OUTPUT
 
       - name: Cache Playwright Browsers
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
@@ -106,19 +108,19 @@ jobs:
 
       - name: Install Playwright Browsers
         if: steps.playwright-cache.outputs.cache-hit != 'true'
-        run: pnpm run setup:playwright --with-deps
+        run: bun run setup:playwright --with-deps
 
       - name: Install Playwright System Dependencies
         if: steps.playwright-cache.outputs.cache-hit == 'true'
-        run: pnpm exec playwright install-deps
+        run: bunx playwright install-deps
 
       - name: Playwright E2E Tests
-        run: pnpm run test:e2e
+        run: bun run test:e2e
 
       - name: Browser-backed unit tests
         timeout-minutes: 10
-        run: node --test src/grading/test-fixture.test.ts
+        run: bun test --timeout=120000 src/grading/test-fixture.test.ts
 
       - name: Test Grader Calibration
         # Ensuring playwright is happy
-        run: node bin/gd.ts dev guides/ui-behaviors/directional-navigation-transitions/ --test-grader
+        run: bun bin/gd.ts dev guides/ui-behaviors/directional-navigation-transitions/ --test-grader

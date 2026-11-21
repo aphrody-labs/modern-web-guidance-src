@@ -6,13 +6,13 @@ locally first. For the shape of the published data see [README.md](./README.md).
 ## How it fits together
 
 ```
-src/harness/public/allowlist.json  ──►  pnpm public:publish  ──►  public-evals/  ──►  dashboard
+src/harness/public/allowlist.json  ──►  bun run public:publish  ──►  public-evals/  ──►  dashboard
         (policy, in repo)               (reads the bucket)        (on gh-pages)      (reads files)
 ```
 
 - `allowlist.json` on `main` is the single source of truth. The dashboard never
-  reads it; nothing changes on the live site until `pnpm public:publish` runs.
-- `pnpm public:publish` is the only thing that pushes `public-evals/` to
+  reads it; nothing changes on the live site until `bun run public:publish` runs.
+- `bun run public:publish` is the only thing that pushes `public-evals/` to
   `gh-pages`. The nightly run (`src/harness/nightly/run-guidance-nightly.sh`)
   calls it after the agents finish when its checkout is a clean `main` in sync
   with `origin/main`; run it by hand to apply an allowlist change sooner.
@@ -24,7 +24,7 @@ src/harness/public/allowlist.json  ──►  pnpm public:publish  ──►  pu
 ## Common tasks
 
 Every change is an edit to `src/harness/public/allowlist.json` in a pull
-request. After it merges, the next `pnpm public:publish` run applies it.
+request. After it merges, the next `bun run public:publish` run applies it.
 
 | I want to… | Do |
 |---|---|
@@ -44,9 +44,9 @@ authenticated (`gh auth login` with `workflow` scope) to dispatch the Actions
 Pages deployment:
 
 ```bash
-pnpm public:publish               # build, push gh-pages, and dispatch deployment
-pnpm public:publish --dry-run     # build and report only
-pnpm public:publish --no-dispatch # push gh-pages without dispatching deploy
+bun run public:publish               # build, push gh-pages, and dispatch deployment
+bun run public:publish --dry-run     # build and report only
+bun run public:publish --no-dispatch # push gh-pages without dispatching deploy
 ```
 
 Keep that checkout up to date with `origin/main`. A checkout whose output
@@ -75,7 +75,7 @@ output directory. Needs gcloud credentials for the bucket.
 cp src/harness/public/allowlist.json /tmp/al.json
 # edit /tmp/al.json: add a model to releasedModels, set retention.maxSuites to 2
 
-node src/harness/public/build.ts --all --out /tmp/al-out --allowlist /tmp/al.json
+bun src/harness/public/build.ts --all --out /tmp/al-out --allowlist /tmp/al.json
 ls /tmp/al-out/public-evals
 ```
 
@@ -94,7 +94,7 @@ Edit `/tmp/al.json`, rerun, and watch the summary line:
 | rerun with no edit | all `unchanged`, about two seconds |
 
 To see it in the dashboard, build into `out/` instead (`--out out`), run
-`pnpm dashboard`, and open `http://localhost:3000/?source=public`. Afterwards
+`bun run dashboard`, and open `http://localhost:3000/?source=public`. Afterwards
 `git checkout src/harness/public/allowlist.json` if you touched it.
 
 ## Reading the build output
@@ -123,7 +123,7 @@ To see it in the dashboard, build into `out/` instead (`--out out`), run
 |---|---|
 | `src/harness/public/allowlist.json` | the policy |
 | `src/harness/public/allowlist.schema.json` | its schema |
-| `src/harness/public/build.ts` | `pnpm public:build` |
-| `src/harness/public/publish-cli.ts` | `pnpm public:publish` |
+| `src/harness/public/build.ts` | `bun run public:build` |
+| `src/harness/public/publish-cli.ts` | `bun run public:publish` |
 | `gh-pages:/public-evals/` | the published copy |
 | `out/public-evals/` | local build output (gitignored) |

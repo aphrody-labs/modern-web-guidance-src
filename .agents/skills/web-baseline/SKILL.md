@@ -12,17 +12,17 @@ Use this skill when you need to verify if a web feature is ready for use or when
 **Basic Search:**
 To search for features by ID or description:
 ```bash
-pnpm baselinestatus <query>
+bun run baselinestatus <query>
 ```
-Example: `pnpm baselinestatus over`
+Example: `bun run baselinestatus over`
 
 **JSON Output:**
 To get structured output for easier parsing:
 ```bash
-pnpm baselinestatus <query> --json
+bun run baselinestatus <query> --json
 ```
 
-Example: `pnpm baselinestatus over --json`
+Example: `bun run baselinestatus over --json`
 
 ### Baseline Status Mapping
 

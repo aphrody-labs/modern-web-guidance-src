@@ -30,6 +30,20 @@ describe("getSkillsRunner", () => {
     }
   });
 
+  it("selects bunx for the Bun UA and for devEngines bun", () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "mwg-runner-bun-"));
+    try {
+      assert.deepStrictEqual(
+        getSkillsRunner({ npm_config_user_agent: "bun/1.4.6 npm/? node/v24.3.0 linux x64" }, dir),
+        { cmd: "bunx", prefixArgs: [] },
+      );
+      fs.writeFileSync(path.join(dir, "package.json"), JSON.stringify({ devEngines: { packageManager: { name: "bun" } } }));
+      assert.deepStrictEqual(getSkillsRunner({}, dir), { cmd: "bunx", prefixArgs: [] });
+    } finally {
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
   it("defaults to npx -y when UA is npm or absent without devEngines", () => {
     const emptyDir = fs.mkdtempSync(path.join(os.tmpdir(), "mwg-runner-empty-"));
     try {

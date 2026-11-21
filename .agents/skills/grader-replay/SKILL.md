@@ -41,16 +41,16 @@ Then run [`scripts/replay.ts`](scripts/replay.ts):
 
 ```bash
 # Auto-scope to target graders changed against origin/main
-node .agents/skills/grader-replay/scripts/replay.ts
+bun .agents/skills/grader-replay/scripts/replay.ts
 
 # Scope to specific guides or target keys
-node .agents/skills/grader-replay/scripts/replay.ts --guides css-layout,menu
+bun .agents/skills/grader-replay/scripts/replay.ts --guides css-layout,menu
 
 # Replay all tasks (required when modifying test-fixture.ts, run-grader.ts, or parser deps)
-node .agents/skills/grader-replay/scripts/replay.ts --all --concurrency 6
+bun .agents/skills/grader-replay/scripts/replay.ts --all --concurrency 6
 
 # Pin specific jobs, cap runs, or emit JSON
-node .agents/skills/grader-replay/scripts/replay.ts \
+bun .agents/skills/grader-replay/scripts/replay.ts \
   --suites nightly-2026-11-02_03-04-27-codex_cli,nightly-2026-10-31_23-00-02-antigravity_cli \
   --limit 12 \
   --json
@@ -72,7 +72,7 @@ Inspect the saved `agent.patch` (or `index.html` for Gen 1 tasks), the modified 
 - **Title or structure drift (expected diff):** Check titles appear as `saved -> <missing>` and `<missing> -> now` because tests were renamed or consolidated on `main`. Check `git log -p -n 3 -- <grader>` and compare pass/fail totals.
 - **Base-app drift (`PATCH_CONFLICT`):** An older `agent.patch` fails to apply against current `src/harness/base-apps/` or `zero-passrate.patch`. Not a grader bug — re-run against a newer nightly job from GCS.
 
-If you edit a `grader.ts` after triaging, re-run `gd dev <guide> --test-grader` and `scripts/replay.ts`, then finish with `pnpm run preflight`.
+If you edit a `grader.ts` after triaging, re-run `gd dev <guide> --test-grader` and `scripts/replay.ts`, then finish with `bun run preflight`.
 
 ## Related Skills
 

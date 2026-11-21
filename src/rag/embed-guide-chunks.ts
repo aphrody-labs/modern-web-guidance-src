@@ -6,7 +6,7 @@
  * Results are stored in an Int8 + scale cache in `src/rag/gen/`.
  *
  * Usage:
- *   node src/rag/embed-guide-chunks.ts [--check] [--force] [--prune]
+ *   bun src/rag/embed-guide-chunks.ts [--check] [--force] [--prune]
  */
 
 import fs from "node:fs";
@@ -185,7 +185,7 @@ export async function embedGuideChunks(options: EmbedChunksOptions = {}): Promis
     if (!apiKey && !initialVertexAuth) {
       const missingGuides = [...new Set(missingChunks.map((c) => c.guideId))];
       throw new Error(
-        `GEMINI_API_KEY is required to embed ${missingChunks.length} missing chunk(s) across ${missingGuides.length} guide(s) (${missingGuides.join(", ")}). Set GEMINI_API_KEY in .env or your environment (or configure Vertex AI ADC), or run 'node src/rag/embed-guide-chunks.ts' with GEMINI_API_KEY set.`
+        `GEMINI_API_KEY is required to embed ${missingChunks.length} missing chunk(s) across ${missingGuides.length} guide(s) (${missingGuides.join(", ")}). Set GEMINI_API_KEY in .env or your environment (or configure Vertex AI ADC), or run 'bun src/rag/embed-guide-chunks.ts' with GEMINI_API_KEY set.`
       );
     }
 
@@ -332,7 +332,7 @@ async function main(): Promise<void> {
       for (const g of missingGuides) {
         console.error(`   - ${g}`);
       }
-      console.error(`\nRun 'node src/rag/embed-guide-chunks.ts' to embed them before publishing.`);
+      console.error(`\nRun 'bun src/rag/embed-guide-chunks.ts' to embed them before publishing.`);
       process.exit(1);
     } else {
       console.log(

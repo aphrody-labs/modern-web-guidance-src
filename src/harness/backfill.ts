@@ -9,14 +9,14 @@
  * to re-process results, running grading only if missing, and updating the summary files.
  * 
  * Usage:
- * node src/harness/backfill.ts [custom_results_dir]
+ * bun src/harness/backfill.ts [custom_results_dir]
  * 
  * If no argument is provided, it defaults to the project's standard results directory.
  */
 
 import path from 'path';
 import fs from 'fs';
-import 'colors';
+import { cBold, cCyan, cRed } from '../core/colors.ts';
 import { evaluateSuite } from './evaluate.ts';
 import { suitesDir } from '../core/paths.ts';
 
@@ -36,12 +36,12 @@ async function backfillSuite(suiteResultsDir: string, suiteName: string) {
 }
 
 export async function runBackfill() {
-  console.log('Starting Backfill of all results...'.cyan.bold);
+  console.log(cBold(cCyan('Starting Backfill of all results...')));
 
   let mainResultsDir = resolveResultsDir(process.argv, suitesDir);
 
   if (!fs.existsSync(mainResultsDir)) {
-    console.error(`Results directory not found at ${mainResultsDir}!`.red);
+    console.error(cRed(`Results directory not found at ${mainResultsDir}!`));
     process.exit(1);
   }
 
@@ -51,11 +51,11 @@ export async function runBackfill() {
 
   if (hasRunDirs) {
     const suiteName = path.basename(mainResultsDir);
-    console.log(`Detected single suite folder. Backfilling ${suiteName}...`.cyan);
+    console.log(cCyan(`Detected single suite folder. Backfilling ${suiteName}...`));
     await backfillSuite(mainResultsDir, suiteName);
   } else {
     const suiteDirs = entries.filter(e => e.isDirectory()).map(e => e.name);
-    console.log(`Found ${suiteDirs.length} potential suites in ${mainResultsDir}.`.cyan);
+    console.log(cCyan(`Found ${suiteDirs.length} potential suites in ${mainResultsDir}.`));
 
     for (const suiteName of suiteDirs) {
       const suiteResultsDir = path.join(mainResultsDir, suiteName);
@@ -63,7 +63,7 @@ export async function runBackfill() {
     }
   }
 
-  console.log('Backfill completed!'.cyan.bold);
+  console.log(cBold(cCyan('Backfill completed!')));
 }
 
 import { fileURLToPath } from 'url';

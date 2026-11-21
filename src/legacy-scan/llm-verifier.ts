@@ -280,7 +280,7 @@ export interface VerifierVerdict {
 export interface VerifierOptions {
   readonly apiKey?: string;
   readonly baseUrl?: string;
-  readonly fetchFn?: typeof fetch;
+  readonly fetchFn?: (...args: Parameters<typeof fetch>) => Promise<Response>;
   readonly concurrency?: number;
   readonly maxRetries?: number;
   readonly model?: string;
@@ -355,7 +355,7 @@ export const RETRYABLE_HTTP_STATUSES: ReadonlySet<number> = new Set([429, 500, 5
 export async function fetchWithRetry(
   url: string,
   options: RequestInit,
-  customFetch: typeof fetch,
+  customFetch: (...args: Parameters<typeof fetch>) => Promise<Response>,
   maxRetries = 8,
 ): Promise<Response> {
   let delayMs = 1500;

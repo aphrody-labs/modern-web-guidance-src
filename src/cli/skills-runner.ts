@@ -13,6 +13,7 @@ export interface SkillsRunner {
 }
 
 const NPX: SkillsRunner = { cmd: "npx", prefixArgs: ["-y"] };
+const BUNX: SkillsRunner = { cmd: "bunx", prefixArgs: [] };
 const PNPX: SkillsRunner = { cmd: "pnpx", prefixArgs: [] };
 const YARN_DLX: SkillsRunner = { cmd: "yarn", prefixArgs: ["dlx"] };
 
@@ -24,6 +25,7 @@ function parseMajor(version: unknown): number | null {
 
 function runnerForManager(name: string, version: unknown, defaultYarnToV2: boolean): SkillsRunner | null {
   const pm = name.trim().toLowerCase();
+  if (pm === "bun") return BUNX;
   if (pm === "pnpm") return PNPX;
   if (pm === "yarn") {
     const major = parseMajor(version);
@@ -67,7 +69,7 @@ function readDevEnginesRunner(cwd: string, isNpmUa: boolean): SkillsRunner | nul
   return null;
 }
 
-/** Selects `pnpx`, `yarn dlx`, or `npx -y` for invoking `skills`, avoiding EBADDEVENGINES. */
+/** Selects `bunx`, `pnpx`, `yarn dlx`, or `npx -y` for invoking `skills`, avoiding EBADDEVENGINES. */
 export function getSkillsRunner(
   env: NodeJS.ProcessEnv = process.env,
   cwd: string = process.cwd(),
@@ -77,7 +79,7 @@ export function getSkillsRunner(
   const uaName = slashIdx > 0 ? firstToken.slice(0, slashIdx).toLowerCase() : "";
   if (slashIdx > 0) {
     const uaRunner = runnerForManager(uaName, firstToken.slice(slashIdx + 1), false);
-    // Explicit non-npm UAs (pnpm, yarn 1/2+) take precedence; npm and unknown UAs fall through to devEngines.
+    // Explicit non-npm UAs (bun, pnpm, yarn 1/2+) take precedence; npm and unknown UAs fall through to devEngines.
     if (uaRunner && uaName !== "npm") return uaRunner;
   }
   return readDevEnginesRunner(cwd, uaName === "npm") ?? NPX;

@@ -80,7 +80,7 @@ describe('ClearcutLogger', () => {
       process.env.NODE_TEST_CONTEXT = 'child-v8';
       const logger = new ClearcutLogger();
       await logger.logToolCommand(120, true, CommandType.INSTALL);
-      assert.strictEqual(sendMock.mock.calls.length, 0, 'WatchdogClient.send should not be called inside node --test context');
+      assert.strictEqual(sendMock.mock.calls.length, 0, 'WatchdogClient.send should not be called inside the test context');
     } finally {
       sendMock.mock.restore();
     }

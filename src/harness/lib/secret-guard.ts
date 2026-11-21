@@ -164,7 +164,8 @@ export function loadAllowedEnvFile(
       console.warn(`⚠️ Ignored non-allowlisted .env keys (${ignored.join(', ')}); agent runs use isolated credentials instead.`);
     }
   }
-  return { loaded, ignored };
+  // Node's parseEnv yields sorted keys, Bun's keeps file order: sort so the result is runtime independent.
+  return { loaded: loaded.sort(), ignored };
 }
 
 export function filterAllowedEnv(

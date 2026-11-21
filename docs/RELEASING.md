@@ -16,11 +16,11 @@ To publish manually from your terminal:
 
 ```bash
 # 1. Preview changes and release notes (dry run)
-pnpm run publish-skills --dry-run
+bun run publish-skills --dry-run
 
 # 2. Publish to @latest (or pass --version X.Y.Z)
-pnpm run publish-skills
-pnpm run publish-skills --version 1.0.0
+bun run publish-skills
+bun run publish-skills --version 1.0.0
 ```
 
 **What the publishing pipeline does under the hood:**
@@ -38,10 +38,10 @@ You can generate and preview release notes for any tag or diff using the `genera
 
 ```bash
 # Preview notes comparing against the latest tag using Gemini
-node --env-file=.env src/build/generate-release-notes.ts v0.0.185
+bun src/build/generate-release-notes.ts v0.0.185
 
 # Test deterministic fallback (without API key)
-node src/build/generate-release-notes.ts v0.0.185
+bun src/build/generate-release-notes.ts v0.0.185
 ```
 
 ### Release Notes Structure
@@ -59,7 +59,7 @@ The release notes automatically group changes into clear top-level sections:
 To build, install, and test the compiled package locally as a global CLI:
 
 ```bash
-cd "$(git rev-parse --show-cdup)" && node src/build/build-dist.ts && cd dist/skills-cli && npm install --global .
+cd "$(git rev-parse --show-cdup)" && bun src/build/build-dist.ts && cd dist/skills-cli && npm install --global .
 ```
 
 This registers the package globally and places the `modern-web-guidance` binary in your `PATH`.

@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 
 import { parseArgs } from 'util';
 import path from 'path';
@@ -173,7 +173,7 @@ function spawnChild(command: string, args: string[], options: import('child_proc
 }
 
 function runNpm(args: string[]) {
-  return spawnChild('pnpm', args);
+  return spawnChild('bun', ['run', ...args]);
 }
 
 function requireArg(arg: string | undefined, usage: string): string {

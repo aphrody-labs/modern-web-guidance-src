@@ -24,27 +24,11 @@ describe('getGraderScriptContent', () => {
 
     const scriptContent = getGraderScriptContent(cwd, graderPath, 'dummy-guide');
 
-    // Write to a temporary file with .mjs extension to ensure it's parsed as ESM
-    const tempFile = path.join(process.cwd(), `temp_grader_test_${Math.random().toString(36).substring(7)}.mjs`);
-    fs.writeFileSync(tempFile, scriptContent);
-
-    try {
-      // Check if it compiles as valid JS
-      const result = spawnSync(process.execPath, ['--check', tempFile], { stdio: 'pipe' });
-      
-      // If there are syntax errors, result.status will be non-zero and stderr will contain details
-      if (result.status !== 0) {
-        console.error('Generated script failed compilation check:');
-        console.error(result.stderr.toString());
-      }
-      
-      assert.strictEqual(result.status, 0, 'Generated script should be valid JavaScript');
-    } finally {
-      // Clean up
-      if (fs.existsSync(tempFile)) {
-        fs.unlinkSync(tempFile);
-      }
-    }
+    // Bun has no `--check`; Transpiler throws on syntax errors.
+    assert.doesNotThrow(
+      () => new Bun.Transpiler({ loader: 'js' }).transformSync(scriptContent),
+      'Generated script should be valid JavaScript',
+    );
   });
 
   test('passes baselineTarget to runPlaywright in generated script', () => {

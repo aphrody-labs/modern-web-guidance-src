@@ -90,7 +90,7 @@ const USER_SEGMENT_PATTERNS: readonly RegExp[] = [CLOUDTOP_HOME_RE, POSIX_HOME_R
 
 /**
  * Container, CI, toolchain, and system account names that also appear in
- * ordinary harness or web-app text (`node scripts/build.js`, `Playwright test
+ * ordinary harness or web-app text (`bun scripts/build.js`, `Playwright test
  * runner`). The name is never harvested as a forbidden token, and a bare
  * home directory under it (`HOME=/home/runner`, `C:\Users\runner`) is not an
  * identity leak. Anything *inside* such a home is still rewritten or flagged,

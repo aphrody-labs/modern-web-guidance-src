@@ -27,7 +27,7 @@ if (process.argv[1] === __filename) {
   const current = fs.existsSync(FEATURE_TO_GROUPS_PATH) ? fs.readFileSync(FEATURE_TO_GROUPS_PATH, 'utf8') : '';
   if (process.argv.includes('--check')) {
     if (current !== expected) {
-      console.error('src/ci/feature-to-groups.gen.json is out of date. Run: node src/ci/generate-feature-to-groups.ts');
+      console.error('src/ci/feature-to-groups.gen.json is out of date. Run: bun src/ci/generate-feature-to-groups.ts');
       process.exit(1);
     }
     console.log('src/ci/feature-to-groups.gen.json is up to date.');

@@ -56,22 +56,22 @@ For a technical walkthrough of the repository directory layout and architecture,
 
 ## Development Setup & Quality Gate
 
-This project uses **pnpm** (requires Node.js `>=22.18.0`):
+This project uses **Bun** (requires Bun `>=1.4.0`):
 
 ```bash
 # Clone and install dependencies:
 git clone https://github.com/GoogleChrome/modern-web-guidance-src.git
 cd modern-web-guidance-src
-pnpm install
+bun install
 
 # Link the unified CLI globally:
-pnpm link --global && gd setup-completion
+bun link && gd setup-completion
 
 # Fast static check:
-pnpm typecheck && pnpm lint
+bun run typecheck && bun run lint
 
 # Full preflight gate (builds distributions, typechecks, lints, and runs all unit tests):
-pnpm preflight
+bun run preflight
 ```
 
 When using a coding agent to author changes or address PR review feedback, follow the workflows and GitHub etiquette in [`AGENTS.md`](./AGENTS.md#github--pr-etiquette).
@@ -101,7 +101,7 @@ When you're ready to submit your pull request:
 
 1. **Check the PR Checklist**:
    - [ ] Signed the [Google CLA](https://developers.google.com/open-source/cla/individual).
-   - [ ] All preflight checks pass (`pnpm preflight`).
+   - [ ] All preflight checks pass (`bun run preflight`).
    - [ ] For guidance PRs: followed the checklist in [`guides/CONTRIBUTING.md`](./guides/CONTRIBUTING.md).
 2. **Push your branch and open a PR** against `main` on [GoogleChrome/modern-web-guidance-src](https://github.com/GoogleChrome/modern-web-guidance-src).
 3. **Review Process**: Maintainers or designated Content ATLs will review your PR, run CI checks, and provide feedback. Once approved and all checks pass, your PR will be merged.

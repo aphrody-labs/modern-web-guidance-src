@@ -19,7 +19,7 @@
  *    folded into `W` (`query-words.scale.f32`).
  *
  * Usage:
- *   node src/rag/train-query-words.ts [--extra-queries path/to/train-queries.jsonl] [--skip-tokenlearn]
+ *   bun src/rag/train-query-words.ts [--extra-queries path/to/train-queries.jsonl] [--skip-tokenlearn]
  */
 
 import fs from "node:fs";

@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+const REPO_LOCKFILES = ['bun.lock', 'bun.lockb', 'pnpm-lock.yaml'];
 const BUNDLE_DIR = path.dirname(fileURLToPath(import.meta.url));
 
 /**
@@ -14,10 +15,10 @@ export function resolveSkillsCliDataDir(): string {
   if (fs.existsSync(path.join(BUNDLE_DIR, 'gen/guides.json')) || fs.existsSync(path.join(BUNDLE_DIR, 'gen/guide-chunks.json.gz'))) {
     return BUNDLE_DIR;
   }
-  // In repo source mode (src/rag/), walk up to repo root (where pnpm-lock.yaml lives) and use out/build/skills-cli
+  // In repo source mode (src/rag/), walk up to repo root (where the lockfile lives) and use out/build/skills-cli
   let dir = BUNDLE_DIR;
   while (dir !== path.dirname(dir)) {
-    if (fs.existsSync(path.join(dir, 'pnpm-lock.yaml'))) {
+    if (REPO_LOCKFILES.some((lockfile) => fs.existsSync(path.join(dir, lockfile)))) {
       return path.join(dir, 'out/build/skills-cli');
     }
     dir = path.dirname(dir);

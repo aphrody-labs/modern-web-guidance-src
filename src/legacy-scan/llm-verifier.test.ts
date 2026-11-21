@@ -151,7 +151,7 @@ describe('LLM verifier', () => {
   test('runLlmVerifier returns kept findings and verdicts via mock fetch', async () => {
     const rulesById = new Map<string, ScanRule>([['test-rule', mockRule]]);
 
-    const mockFetch: typeof fetch = async (_url, options) => {
+    const mockFetch: (...args: Parameters<typeof fetch>) => Promise<Response> = async (_url, options) => {
       const body = JSON.parse(options?.body as string) as {
         contents: Array<{ parts: Array<{ text: string }> }>;
       };
@@ -179,7 +179,7 @@ describe('LLM verifier', () => {
 
   test('runLlmVerifier handles empty findings array without network requests', async () => {
     let called = false;
-    const mockFetch: typeof fetch = async () => {
+    const mockFetch: (...args: Parameters<typeof fetch>) => Promise<Response> = async () => {
       called = true;
       return new Response('', { status: 200 });
     };
@@ -197,7 +197,7 @@ describe('LLM verifier', () => {
     const rulesById = new Map<string, ScanRule>([['test-rule', mockRule]]);
     let attempts = 0;
 
-    const mockFetch: typeof fetch = async () => {
+    const mockFetch: (...args: Parameters<typeof fetch>) => Promise<Response> = async () => {
       attempts++;
       return attempts === 1
         ? new Response('Rate limited', { status: 429 })

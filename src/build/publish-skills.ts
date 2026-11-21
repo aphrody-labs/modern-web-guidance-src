@@ -6,7 +6,6 @@ import ghpages from 'gh-pages';
 import { buildDist } from './build-dist.ts';
 import { updateReadmeWithFeaturesAndUseCases, getFeaturesAndUseCases } from './build-readme.ts';
 import { fileURLToPath } from 'node:url';
-import { minimatch } from 'minimatch';
 import { generateReleaseNotes } from './generate-release-notes.ts';
 import { rootDir } from '../core/paths.ts';
 import { embedGuideChunks } from '../rag/embed-guide-chunks.ts';
@@ -55,8 +54,8 @@ export function filterPublishFiles(files: string[], patterns: string[]): string[
 
   return files
     .filter((file) =>
-      positivePatterns.some((pattern) => minimatch(file, pattern, { dot: true })) &&
-      negativePatterns.every((pattern) => !minimatch(file, pattern, { dot: true })),
+      positivePatterns.some((pattern) => new Bun.Glob(pattern).match(file)) &&
+      negativePatterns.every((pattern) => !new Bun.Glob(pattern).match(file)),
     )
     .sort((a, b) => a.localeCompare(b));
 }
@@ -273,13 +272,13 @@ export async function validate(newVersion: string, deps: ValidateDeps = {}) {
     embedChunks = embedGuideChunks,
     runBuildDist = buildDist,
     runDistTests = () =>
-      execSync('node --test src/build/dist.test.ts', {
+      execSync('bun test src/build/dist.test.ts', {
         cwd: ROOT_DIR,
         stdio: 'inherit',
         env: { ...process.env, TEST_REPORTER: 'spec' },
       }),
     runRagBenchmark = () =>
-      execSync('node src/rag/benchmarks/bench-rag.ts --ci', {
+      execSync('bun src/rag/benchmarks/bench-rag.ts --ci', {
         cwd: ROOT_DIR,
         stdio: 'inherit',
       }),
@@ -380,10 +379,10 @@ async function main() {
     console.log('====================================================================================\n');
 
     console.log(`\n💡 Tip: Run thorough pre-flight verification with FULL=1 to include heavy agent tests:`);
-    console.log(`   env FULL=1 TEST_REPORTER=spec pnpm test`);
+    console.log(`   env FULL=1 TEST_REPORTER=spec bun run test`);
   } else {
     console.log(`\n💡 Tip: Run thorough pre-flight verification with FULL=1 to include heavy agent tests:`);
-    console.log(`   env FULL=1 TEST_REPORTER=spec pnpm test`);
+    console.log(`   env FULL=1 TEST_REPORTER=spec bun run test`);
 
     const ref = process.env.GITHUB_REF || 'main';
     const branch = ref.replace(/^refs\/heads\//, '');

@@ -82,20 +82,20 @@ Follow these guidelines whenever authoring TypeScript, JavaScript, CLI commands,
 All changes must pass linting, typechecking, and tests before PR submission:
 - **Fast dev check (lint & typecheck):**
   ```bash
-  pnpm typecheck && pnpm lint
+  bun run typecheck && bun run lint
   ```
 - **Full preflight gate (all PRs):** Bundles build, typecheck, lint, and parallel unit tests across all workspaces:
   ```bash
-  pnpm run preflight
+  bun run preflight
   ```
-- **Browser E2E gate (dashboard / UI changes):** Playwright browser tests are not included in `pnpm run preflight` and must be executed when touching frontend visualizers, dashboard code, or server endpoints in `src/dashboard/`:
+- **Browser E2E gate (dashboard / UI changes):** Playwright browser tests are not included in `bun run preflight` and must be executed when touching frontend visualizers, dashboard code, or server endpoints in `src/dashboard/`:
   ```bash
-  pnpm run test:e2e
+  bun run test:e2e
   ```
-  *(Run `pnpm run setup:playwright` first if browser binaries are not installed).*
+  *(Run `bun run setup:playwright` first if browser binaries are not installed).*
 
 ### Domain-Specific Validation
-- **Serving & Skills:** When modifying skills packaging, verify with `pnpm run publish-skills --dry-run`.
+- **Serving & Skills:** When modifying skills packaging, verify with `bun run publish-skills --dry-run`.
 - **Guides & Graders:** When authoring or updating evaluation capsules, verify grader calibration via `gd dev <guide> --test-grader`.
 - **Clean Git Tree:** The build must produce zero uncommitted side effects or untracked artifacts (`git status` must remain clean).
 
@@ -115,4 +115,4 @@ All changes must pass linting, typechecking, and tests before PR submission:
 6. [ ] **Configs:** Root `tsconfig.json`, `package.json`, and `.oxlintignore` are untouched unless explicitly intended.
 7. [ ] **Remote I/O & Git:** Remote fetches are strictly scoped and cached; no transient debug artifacts committed.
 8. [ ] **Dashboard/UI:** Handles static vs. local server modes; URL parameters safely parsed and sanitized.
-9. [ ] **Verification:** `pnpm run preflight` (and `pnpm run test:e2e` for `src/dashboard/` changes) passes with 0 errors.
+9. [ ] **Verification:** `bun run preflight` (and `bun run test:e2e` for `src/dashboard/` changes) passes with 0 errors.

@@ -480,10 +480,10 @@ export async function processGuides(opts: BuildOptions): Promise<boolean> {
         console.warn(`   - ${g}`);
       }
       console.warn(
-        `   These chunks are indexed for BM25 only (vector: []). Run 'node src/rag/embed-guide-chunks.ts' to embed them with the teacher model.\n`
+        `   These chunks are indexed for BM25 only (vector: []). Run 'bun src/rag/embed-guide-chunks.ts' to embed them with the teacher model.\n`
       );
       throw new Error(
-        `Release check failed: ${missingChunks.length} chunk(s) across ${missingGuides.length} guide(s) lack cached teacher vectors. Run 'node src/rag/embed-guide-chunks.ts' before release.`
+        `Release check failed: ${missingChunks.length} chunk(s) across ${missingGuides.length} guide(s) lack cached teacher vectors. Run 'bun src/rag/embed-guide-chunks.ts' before release.`
       );
     } else {
       console.log(`ℹ️  ${missingChunks.length} chunk(s) across ${missingGuides.length} guide(s) not yet in guide-chunk-cache (using BM25 until release embedding).`);

@@ -46,7 +46,7 @@ Standard information retrieval metrics like raw recall don't account for how cod
 
 ## Directory Structure
 
-- **`bench-rag.ts`**: Primary benchmark CLI (`pnpm benchmark:rag`). Evaluates the current working tree or runs side-by-side A/B comparisons between any two git refs (`--base <ref> --head <ref>`) using isolated git worktrees and embedder-hash-keyed query vector caching.
+- **`bench-rag.ts`**: Primary benchmark CLI (`bun run benchmark:rag`). Evaluates the current working tree or runs side-by-side A/B comparisons between any two git refs (`--base <ref> --head <ref>`) using isolated git worktrees and embedder-hash-keyed query vector caching.
 - **`metrics.ts`**: Computes per-query and aggregate `nDCG@5` (with broad discipline guides capped at `grade = 1` when a `grade = 2` leaf guide exists), `Success@1` ($\text{grade} \ge 1$), `Hit@1` ($\text{grade} = 2$), `LeafRecall@5` ($\text{grade} = 2$ leaf guides), `Disc@1` (broad discipline top-1 rate), `MRR@5`, `Recall@5`, `Expected@1`, average returned tokens per query, answerable empty-return rate, OOS false-positive admission rate (`near` / `far`), unjudged rate, and 2,000-iteration paired bootstrap 95% confidence intervals.
 - **`dataset.ts`** & **`dataset.test.ts`**: JSONL schemas, parsers, boundary validators, and the GCS `wild` dataset loader (`ensureWildDataset`).
 - **`judge-fill.ts`** & **`judge-prompts.ts`**: Multi-retriever candidate pooling and incremental LLM-as-judge grading for any unjudged `(query, guide)` pairs.
@@ -57,28 +57,28 @@ Standard information retrieval metrics like raw recall don't account for how cod
 
 ```bash
 # Run full benchmark on the dev split (wild + agent dev splits + oos) on the current working tree:
-pnpm benchmark:rag
+bun run benchmark:rag
 
 # Run benchmark specifically on the held-out test split (for final reporting):
-pnpm benchmark:rag --split test
+bun run benchmark:rag --split test
 
 # Run benchmark on all splits combined:
-pnpm benchmark:rag --split all
+bun run benchmark:rag --split all
 
 # Run only checked-in public datasets (no GCS credentials required; runs in CI):
-pnpm benchmark:rag --public-only
+bun run benchmark:rag --public-only
 
 # Run against historical wild-v1 dataset:
-pnpm benchmark:rag --wild-version v1
+bun run benchmark:rag --wild-version v1
 
 # A/B compare a branch or commit against origin/main (with paired 95% bootstrap CIs):
-pnpm benchmark:rag --base origin/main --head HEAD
+bun run benchmark:rag --base origin/main --head HEAD
 
 # Compare two historical commits against the current guide corpus:
-pnpm benchmark:rag --base 394e1220f~1 --head 394e1220f
+bun run benchmark:rag --base 394e1220f~1 --head 394e1220f
 
 # Measure TFJS embedder cold-start and warm inference latency:
-node src/rag/benchmarks/benchmark-latency.ts
+bun src/rag/benchmarks/benchmark-latency.ts
 ```
 
 ## Updating Qrels & Datasets
@@ -87,7 +87,7 @@ When new guides are added or retrieval changes surface previously unpooled guide
 
 ```bash
 # Incrementally judge any ungraded top-10 candidates on public datasets:
-node --env-file=.env src/rag/benchmarks/judge-fill.ts src/rag/benchmarks/data/harness-queries.jsonl src/rag/benchmarks/data/harness-qrels.jsonl
+bun src/rag/benchmarks/judge-fill.ts src/rag/benchmarks/data/harness-queries.jsonl src/rag/benchmarks/data/harness-qrels.jsonl
 ```
 
 ## Historical Milestones & Scoreboard

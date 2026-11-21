@@ -418,8 +418,8 @@ export function main(): void {
 
   if (args.length < 2 || Number.isNaN(number) || (type !== 'issue' && type !== 'pr')) {
     console.log('Usage for manual testing:');
-    console.log('  node src/ci/atl-triage.ts issue <number> [label1] [label2] ... [--dry-run]');
-    console.log('  node src/ci/atl-triage.ts pr <number> [--dry-run]');
+    console.log('  bun src/ci/atl-triage.ts issue <number> [label1] [label2] ... [--dry-run]');
+    console.log('  bun src/ci/atl-triage.ts pr <number> [--dry-run]');
     process.exit(1);
   }
 

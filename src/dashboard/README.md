@@ -28,7 +28,7 @@ The application fetches evaluation data directly from the private Google Cloud S
 To run the dashboard locally and see local results (run from the root `modern-web-guidance-src` directory):
 
 ```bash
-pnpm dashboard
+bun run dashboard
 ```
 
 ### Parity Testing
